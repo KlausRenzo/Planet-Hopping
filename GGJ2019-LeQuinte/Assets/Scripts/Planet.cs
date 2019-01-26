@@ -2,22 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "_planet", menuName = "Planet")]
-public class Planet : ScriptableObject 
+public class Planet : MonoBehaviour 
 {
 
     #region Fields
 
-    public Rock rockType;
+    public PlanetInfo planetInfos;
+    public GameObject bgClouds;
+    public GameObject fgClouds;
+    public SpriteRenderer terrain;
+    public SpriteRenderer grass;
+    public SpriteRenderer atmosphere;
 
-	#endregion
+    public float bgCloudsSpeed;
+    public float fgCloudsSpeed;
+    public float planetSpeed;
 
-	#region Unity Callbacks
+    #endregion
 
-	#endregion
+    private void Update()
+    {
+        PlanetTick();
+    }
 
-	#region Methods
+    #region Methods
 
-	#endregion
+    public void PlanetTick()
+    {
+
+    }
+
+    public void GeneratePlanet()
+    {
+
+    }
+
+    #endregion
 
 }

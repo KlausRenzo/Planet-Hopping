@@ -23,6 +23,8 @@ public class EnviromentDataGenerator : MonoBehaviour
 
     #region Methods
 
+#if UNITY_EDITOR
+
     [Button(Name = "Generate Enviroment Data", ButtonHeight = 50)]
     public void GenerateData()
     {
@@ -189,6 +191,8 @@ public class EnviromentDataGenerator : MonoBehaviour
         }
     }
 
+#endif
+
     private ColorType GetColorType(string color)
     {
         ColorType type = ColorType.black;
@@ -238,6 +242,6 @@ public class EnviromentDataGenerator : MonoBehaviour
         return type;
     }
 
-    #endregion
+#endregion
 
 }

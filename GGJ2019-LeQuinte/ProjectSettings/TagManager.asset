@@ -41,3 +41,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Space
+    uniqueID: 4193489519
+    locked: 0
+  - name: FallingStars
+    uniqueID: 3785388065
+    locked: 0
+  - name: Atmosphere
+    uniqueID: 3713080595
+    locked: 0
+  - name: CloudsBG
+    uniqueID: 3649728923
+    locked: 0
+  - name: Planet
+    uniqueID: 3612418063
+    locked: 0
+  - name: Player
+    uniqueID: 3749263921
+    locked: 0
+  - name: Grass
+    uniqueID: 2764595617
+    locked: 0
+  - name: CloudsFG
+    uniqueID: 1542831357
+    locked: 0
