@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode moveRight;
     public KeyCode jump;
 
+    public float timeForPlanetHop = 2;
     public float playerSpeed;
 
     public Planet currentPlanet;
@@ -24,10 +25,17 @@ public class PlayerMovement : MonoBehaviour
     private float currentLerp;
     private ShapeType currentShapeType;
     private int horizontalMovement;
+    private Animator anim;
+    private float startJumpTime;
 
     #endregion
 
     #region Unity Callback
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -107,7 +115,54 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(jump))
         {
-            //robe
+            startJumpTime = Time.time;
+        }
+        if (Input.GetKeyUp(jump))
+        {
+            if(Time.time - startJumpTime <= 0)
+            {
+                //planetHop
+            }
+            else
+            {
+                anim.SetInteger("Status", 2);
+            }
+        }
+    }
+
+    public void SetLanded()
+    {
+        anim.SetBool("isJumping", false);
+    }
+
+    public void EndlessCharge()
+    {
+        anim.speed = 0;
+    }
+
+    private void ReleaseCharge()
+    {
+        anim.speed = 1;
+    }
+
+    public void RefreshMovementInfo()
+    {
+        currentMovementIndex = 0;
+        currentShapeType = currentPlanet.planetInfos.planetAppearanceType.shapeType;
+        switch (currentShapeType)
+        {
+            case ShapeType.circle:
+                transform.position = currentPlanet.movementCircle[0].transform.position;
+                break;
+            case ShapeType.tri:
+                transform.position = currentPlanet.movementTri[0].transform.position;
+                break;
+            case ShapeType.quad:
+                transform.position = currentPlanet.movementQuad[0].transform.position;
+                break;
+            case ShapeType.esa:
+                transform.position = currentPlanet.movementEsa[0].transform.position;
+                break;
         }
     }
 
