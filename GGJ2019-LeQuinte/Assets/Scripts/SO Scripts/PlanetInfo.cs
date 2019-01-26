@@ -14,7 +14,10 @@ public class PlanetInfo : ScriptableObject
     public Fauna faunaType;
     public Atmosphere atmosphereType;   
     public PlanetAppearance planetAppearanceType;
+    public float bgCloudSpeed;
+    public float fgCloudSpeed;
+    public float planetSpeed;
 
-	#endregion
+    #endregion
 
 }

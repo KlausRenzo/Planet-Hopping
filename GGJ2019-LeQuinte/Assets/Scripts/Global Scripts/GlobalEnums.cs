@@ -23,3 +23,9 @@ public enum ProbabilityType
     Color,
     Shape,
 }
+public enum JumpDirections
+{
+    Left,
+    Top,
+    Right,
+}

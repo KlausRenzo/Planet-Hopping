@@ -15,7 +15,6 @@ public class PlanetPreview : MonoBehaviour
     public Image planetImage;
     public Image bgCloudImage;
     public Image fgCloudImage;
-    [HideInInspector]
     public Image atmosphereImage;
 
     #endregion

@@ -9,7 +9,7 @@ public class PlanetGenerator : MonoBehaviour
 
     #region Fields
 
-    public int planetsToGenerateEveryTime = 1;
+    public int previewsToGenerateEveryTime = 3;
     public Vector2 minMaxGeneratedPlanetSpeed = new Vector2(1f, 5f);
     public Vector2 minMaxGeneratedBgCloudsSpeed = new Vector2(1f, 5f);
     public Vector2 minMaxGeneratedFgCloudsSpeed = new Vector2(1f, 5f);
@@ -20,8 +20,8 @@ public class PlanetGenerator : MonoBehaviour
     public float secondaryColorProbability = 30;
 
     public GameObject planet;
-    public GameObject nextPlanets;
-    public List<GameObject> generatedPlanets = new List<GameObject>(); 
+    public GameObject currentPlanet;
+    public List<PlanetInfo> nextPlanetInfos = new List<PlanetInfo>();
 
     EnviromentDataGenerator dataGenerator;
 
@@ -32,42 +32,54 @@ public class PlanetGenerator : MonoBehaviour
     private void Start()
     {
         dataGenerator = GetComponent<EnviromentDataGenerator>();
-        GeneratePlanets();
     }
 
     #endregion
 
     #region Methods
 
-    public void GeneratePlanets()
+    public GameObject GeneratePlanet(int index)
     {
-        for (int i = 0; i < planetsToGenerateEveryTime; i++)
+        GameObject newPlanetObject = Instantiate(planet, currentPlanet.transform);
+        Planet newPlanet = newPlanetObject.GetComponent<Planet>();
+
+        newPlanet.planetInfos = nextPlanetInfos[index];
+        newPlanet.bgCloudsSpeed = newPlanet.planetInfos.bgCloudSpeed;
+        newPlanet.fgCloudsSpeed = newPlanet.planetInfos.fgCloudSpeed;
+        newPlanet.planetSpeed = newPlanet.planetInfos.planetSpeed;
+        newPlanet.planetName = GenerateName(newPlanet.planetInfos.planetAppearanceType);
+
+        if (newPlanet.planetInfos.planetAppearanceType.enviromentSprite != null)
         {
-            GameObject newPlanetObject = Instantiate(planet, nextPlanets.transform);
-            Planet newPlanet = newPlanetObject.GetComponent<Planet>();
-
-            newPlanet.planetInfos = GeneratePlanetInfo();
-            newPlanet.bgCloudsSpeed = UnityEngine.Random.Range(minMaxGeneratedBgCloudsSpeed.x, minMaxGeneratedBgCloudsSpeed.y);
-            newPlanet.fgCloudsSpeed = UnityEngine.Random.Range(minMaxGeneratedFgCloudsSpeed.x, minMaxGeneratedFgCloudsSpeed.y);
-            newPlanet.planetSpeed = UnityEngine.Random.Range(minMaxGeneratedPlanetSpeed.x, minMaxGeneratedPlanetSpeed.y);
-            newPlanet.planetName = GenerateName(newPlanet.planetInfos.planetAppearanceType);
-
-            if (newPlanet.planetInfos.planetAppearanceType.enviromentSprite != null)
-            {
-                newPlanet.terrain.sprite = newPlanet.planetInfos.planetAppearanceType.enviromentSprite;
-            }
-            if (newPlanet.planetInfos.atmosphereType.enviromentSprite != null)
-            {
-                newPlanet.atmosphere.sprite = newPlanet.planetInfos.atmosphereType.enviromentSprite;
-            }
-
-            generatedPlanets.Add(newPlanetObject);
+            newPlanet.terrain.sprite = newPlanet.planetInfos.planetAppearanceType.enviromentSprite;
         }
+        if (newPlanet.planetInfos.atmosphereType.enviromentSprite != null)
+        {
+            newPlanet.atmosphere.sprite = newPlanet.planetInfos.atmosphereType.enviromentSprite;
+        }
+
+        return newPlanetObject;
+    }
+
+    public List<PlanetInfo> GetNextPlanets()
+    {
+        nextPlanetInfos.Clear();
+
+        for (int i = 0; i < previewsToGenerateEveryTime; i++)
+        {
+            nextPlanetInfos.Add(GeneratePlanetInfo());
+        }
+
+        return nextPlanetInfos;
     }
 
     private PlanetInfo GeneratePlanetInfo()
     {
         PlanetInfo newPlanetInfo = ScriptableObject.CreateInstance<PlanetInfo>();
+
+        newPlanetInfo.bgCloudSpeed = UnityEngine.Random.Range(minMaxGeneratedBgCloudsSpeed.x, minMaxGeneratedBgCloudsSpeed.y);
+        newPlanetInfo.fgCloudSpeed = UnityEngine.Random.Range(minMaxGeneratedFgCloudsSpeed.x, minMaxGeneratedFgCloudsSpeed.y);
+        newPlanetInfo.planetSpeed = UnityEngine.Random.Range(minMaxGeneratedPlanetSpeed.x, minMaxGeneratedPlanetSpeed.y);
 
         newPlanetInfo.planetAppearanceType = dataGenerator.generatedPlanetAppearances[UnityEngine.Random.Range(0, dataGenerator.generatedPlanetAppearances.Count)];
 

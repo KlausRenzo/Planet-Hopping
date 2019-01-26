@@ -195,6 +195,7 @@ MonoBehaviour:
   planetImage: {fileID: 114265269779163646}
   bgCloudImage: {fileID: 114206651296325014}
   fgCloudImage: {fileID: 114968801944915888}
+  atmosphereImage: {fileID: 114069169491818692}
 --- !u!114 &114779123886579084
 MonoBehaviour:
   m_ObjectHideFlags: 1

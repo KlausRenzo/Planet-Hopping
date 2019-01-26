@@ -126,14 +126,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663590bc7e3ec1443bb1f79b77a1728a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetsToGenerateEveryTime: 5
-  minMaxGeneratedPlanetSpeed: {x: 1, y: 5}
-  minMaxGeneratedBgCloudsSpeed: {x: 1, y: 5}
-  minMaxGeneratedFgCloudsSpeed: {x: 1, y: 5}
+  previewsToGenerateEveryTime: 3
+  minMaxGeneratedPlanetSpeed: {x: 0.5, y: 2}
+  minMaxGeneratedBgCloudsSpeed: {x: 0.5, y: 2}
+  minMaxGeneratedFgCloudsSpeed: {x: 0.5, y: 2}
   mainShapeProbability: 36
   secondaryShapeProbability: 32
   mainColorProbability: 36
   secondaryColorProbability: 32
   planet: {fileID: 1191397993037328, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-  nextPlanets: {fileID: 0}
-  generatedPlanets: []
+  currentPlanet: {fileID: 0}
+  nextPlanetInfos:
+  - {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156, type: 2}
+  - {fileID: 11400000, guid: 4f25328b79747c04b9b08914304b33b0, type: 2}
+  - {fileID: 11400000, guid: 213431df692c4ee4a8ccfba808cd7e7b, type: 2}
