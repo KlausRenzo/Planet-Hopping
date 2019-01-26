@@ -14,6 +14,13 @@ public class EnviromentDataGenerator : MonoBehaviour
     public List<string> shapedEnviromentTypes;
     public List<string> coloredAndShapedEnviromentTypes;
 
+    public List<Sea> generatedSeas = new List<Sea>();
+    public List<Rock> generatedRocks = new List<Rock>();
+    public List<Tree> generatedTrees = new List<Tree>();
+    public List<Fauna> generatedFauna = new List<Fauna>();
+    public List<Atmosphere> generatedAtmospheres = new List<Atmosphere>();
+    public List<PlanetAppearance> generatedPlanetAppearances = new List<PlanetAppearance>();
+
     private const string spritePath = "Assets/Sprites/Enviroment Sprites";
     private const string endingPath = "Assets/Scripts/ScriptableObject/Enviroment Elements";
     private string[] shapeTypes = System.Enum.GetNames(typeof(ShapeType));
@@ -48,6 +55,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     newAtmosphere.name = color + "_" + envType;
                     newAtmosphere.colorType = GetColorType(color);
                     AssetDatabase.CreateAsset(newAtmosphere, currentEndingPath + newAtmosphere.name + ".asset");
+                    generatedAtmospheres.Add(newAtmosphere);
                     EditorUtility.SetDirty(newAtmosphere);
                 }
             }
@@ -63,6 +71,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     newSea.name = color + "_" + envType;
                     newSea.colorType = GetColorType(color);
                     AssetDatabase.CreateAsset(newSea, currentEndingPath + newSea.name + ".asset");
+                    generatedSeas.Add(newSea);
                     EditorUtility.SetDirty(newSea);
                 }
             }
@@ -87,6 +96,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     newRock.name = shape + "_" + envType;
                     newRock.shapeType = GetShapeType(shape);
                     AssetDatabase.CreateAsset(newRock, currentEndingPath + newRock.name + ".asset");
+                    generatedRocks.Add(newRock);
                     EditorUtility.SetDirty(newRock);
                 }
             }
@@ -102,6 +112,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     newFauna.name = shape + "_" + envType;
                     newFauna.shapeType = GetShapeType(shape);
                     AssetDatabase.CreateAsset(newFauna, currentEndingPath + newFauna.name + ".asset");
+                    generatedFauna.Add(newFauna);
                     EditorUtility.SetDirty(newFauna);
                 }
             }
@@ -129,6 +140,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                         newPlanetAppearance.shapeType = GetShapeType(shape);
                         newPlanetAppearance.colorType = GetColorType(color);
                         AssetDatabase.CreateAsset(newPlanetAppearance, currentEndingPath + newPlanetAppearance.name + ".asset");
+                        generatedPlanetAppearances.Add(newPlanetAppearance);
                         EditorUtility.SetDirty(newPlanetAppearance);
                     }
                 }
@@ -148,6 +160,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                         newTree.shapeType = GetShapeType(shape);
                         newTree.colorType = GetColorType(color);
                         AssetDatabase.CreateAsset(newTree, currentEndingPath + newTree.name + ".asset");
+                        generatedTrees.Add(newTree);
                         EditorUtility.SetDirty(newTree);
                     }
                 }
@@ -163,6 +176,13 @@ public class EnviromentDataGenerator : MonoBehaviour
 
     private void DeleteData()
     {
+        generatedAtmospheres.Clear();
+        generatedSeas.Clear();
+        generatedRocks.Clear();
+        generatedFauna.Clear();
+        generatedPlanetAppearances.Clear();
+        generatedTrees.Clear();
+
         foreach (string envType in coloredEnviromentTypes)
         {
             var files = Directory.GetFiles(endingPath + "/" + envType);

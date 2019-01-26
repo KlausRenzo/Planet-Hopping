@@ -10,8 +10,8 @@ public class Planet : MonoBehaviour
     public PlanetInfo planetInfos;
     public GameObject bgClouds;
     public GameObject fgClouds;
+    public GameObject grass;
     public SpriteRenderer terrain;
-    public SpriteRenderer grass;
     public SpriteRenderer atmosphere;
 
     public float bgCloudsSpeed;
