@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Planet : MonoBehaviour 
@@ -20,6 +21,11 @@ public class Planet : MonoBehaviour
 
     #endregion
 
+    private void Start()
+    {
+        GeneratePlanet();
+    }
+
     private void Update()
     {
         PlanetTick();
@@ -29,12 +35,15 @@ public class Planet : MonoBehaviour
 
     public void PlanetTick()
     {
-
+        terrain.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed);
+        //grass.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed);
+        bgClouds.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed/2f);
+        fgClouds.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed/2f*3f);
     }
 
     public void GeneratePlanet()
     {
-
+        
     }
 
     #endregion

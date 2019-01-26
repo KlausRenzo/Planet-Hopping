@@ -7,13 +7,13 @@ public class Vertex : MonoBehaviour
 {
     void Start()
     {
-        GameManager.Instance.Vertexes.Add(this);
+        VertexController.Instance.Vertexes.Add(this);
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(this.transform.position, 0.5f);
+        Gizmos.DrawSphere(this.transform.position, 0.1f);
     }
 
 }

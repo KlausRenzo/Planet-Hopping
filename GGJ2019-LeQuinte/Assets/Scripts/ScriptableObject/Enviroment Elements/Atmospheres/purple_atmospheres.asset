@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64542817ab53d164ba6df094667501a8, type: 3}
   m_Name: purple_atmospheres
   m_EditorClassIdentifier: 
-  enviromentSprite: {fileID: 0}
+  enviromentSprite: {fileID: 21300000, guid: 23f6ab4247f67ae4fbf54d8c5489377d, type: 3}
   colorType: 0

@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc0ebc74048780b44a9ccb6cf29afa20, type: 3}
   m_Name: purple_esa_planetappearances
   m_EditorClassIdentifier: 
-  enviromentSprite: {fileID: 0}
+  enviromentSprite: {fileID: 21300000, guid: c06442a4665a6924f89b911b5c4e7cad, type: 3}
   shapeType: 2
   colorType: 0
