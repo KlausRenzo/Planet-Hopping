@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e84a9a3e34570f419bef4b028b4cb19, type: 3}
   m_Name: blue_Seas
   m_EditorClassIdentifier: 
-  enviromentSprite: {fileID: 0}
+  enviromentSprite: {fileID: 21300000, guid: 87167ba1f98b63141bb8f9c7d704ae72, type: 3}
   colorType: 3

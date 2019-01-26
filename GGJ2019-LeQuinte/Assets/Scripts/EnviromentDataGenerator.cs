@@ -48,10 +48,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                 foreach (string color in colorTypes)
                 {
                     Atmosphere newAtmosphere = ScriptableObject.CreateInstance<Atmosphere>();
-                    if (File.Exists(spritePath + "/" + color + "_" + envType))
-                    {
-                        newAtmosphere.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + envType, typeof(Sprite));
-                    }
+                    newAtmosphere.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + envType + ".png", typeof(Sprite));
                     newAtmosphere.name = color + "_" + envType;
                     newAtmosphere.colorType = GetColorType(color);
                     AssetDatabase.CreateAsset(newAtmosphere, currentEndingPath + newAtmosphere.name + ".asset");
@@ -64,10 +61,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                 foreach (string color in colorTypes)
                 {
                     Sea newSea = ScriptableObject.CreateInstance<Sea>();
-                    if (File.Exists(spritePath + "/" + color + "_" + envType))
-                    {
-                        newSea.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + envType, typeof(Sprite));
-                    }
+                    newSea.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + envType + ".png", typeof(Sprite));
                     newSea.name = color + "_" + envType;
                     newSea.colorType = GetColorType(color);
                     AssetDatabase.CreateAsset(newSea, currentEndingPath + newSea.name + ".asset");
@@ -89,10 +83,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                 foreach (string shape in shapeTypes)
                 {
                     Rock newRock = ScriptableObject.CreateInstance<Rock>();
-                    if (File.Exists(spritePath + "/" + shape + "_" + envType))
-                    {
-                        newRock.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + shape + "_" + envType, typeof(Sprite));
-                    }
+                    newRock.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + shape + "_" + envType + ".png", typeof(Sprite));
                     newRock.name = shape + "_" + envType;
                     newRock.shapeType = GetShapeType(shape);
                     AssetDatabase.CreateAsset(newRock, currentEndingPath + newRock.name + ".asset");
@@ -105,10 +96,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                 foreach (string shape in shapeTypes)
                 {
                     Fauna newFauna = ScriptableObject.CreateInstance<Fauna>();
-                    if (File.Exists(spritePath + "/" + shape + "_" + envType))
-                    {
-                        newFauna.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + shape + "_" + envType, typeof(Sprite));
-                    }
+                    newFauna.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + shape + "_" + envType + ".png", typeof(Sprite));
                     newFauna.name = shape + "_" + envType;
                     newFauna.shapeType = GetShapeType(shape);
                     AssetDatabase.CreateAsset(newFauna, currentEndingPath + newFauna.name + ".asset");
@@ -132,10 +120,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     foreach (string shape in shapeTypes)
                     {
                         PlanetAppearance newPlanetAppearance = ScriptableObject.CreateInstance<PlanetAppearance>();
-                        if (File.Exists(spritePath + "/" + color + "_" + shape + "_" + envType))
-                        {
-                            newPlanetAppearance.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + shape + "_" + envType, typeof(Sprite));
-                        }
+                        newPlanetAppearance.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + shape + "_" + envType + ".png", typeof(Sprite));
                         newPlanetAppearance.name = color + "_" + shape + "_" + envType;
                         newPlanetAppearance.shapeType = GetShapeType(shape);
                         newPlanetAppearance.colorType = GetColorType(color);
@@ -152,10 +137,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     foreach (string shape in shapeTypes)
                     {
                         Tree newTree = ScriptableObject.CreateInstance<Tree>();
-                        if (File.Exists(spritePath + "/" + color + "_" + shape + "_" + envType))
-                        {
-                            newTree.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + shape + "_" + envType, typeof(Sprite));
-                        }
+                        newTree.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + shape + "_" + envType + ".png", typeof(Sprite));
                         newTree.name = color + "_" + shape + "_" + envType;
                         newTree.shapeType = GetShapeType(shape);
                         newTree.colorType = GetColorType(color);
