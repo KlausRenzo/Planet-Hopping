@@ -199,7 +199,7 @@ MonoBehaviour:
   moveLeft: 97
   moveRight: 100
   jump: 119
-  pickUp: 0
+  pickUp: 115
   timeForPlanetHop: 2
   playerSpeed: 0.01
   currentPlanet: {fileID: 0}

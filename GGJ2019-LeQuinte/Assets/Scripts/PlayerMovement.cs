@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKeyDown(pickUp))
         {
-            if(isCharging)
+            if(isCharging || anim.GetInteger("Status") == 1)
             {
                 ReleaseCharge();
                 anim.SetInteger("Status", 0);
