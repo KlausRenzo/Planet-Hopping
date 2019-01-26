@@ -29,6 +29,7 @@ public class GameFlow : MonoBehaviour
     {
         planetGenerator = FindObjectOfType<PlanetGenerator>();
         playerMovement = FindObjectOfType<PlayerMovement>();
+        playerMovement.RefreshMovementInfo();
     }
 
     private void Update()
@@ -68,6 +69,7 @@ public class GameFlow : MonoBehaviour
 
         //animation land
         playerMovement.currentPlanet = currentPlanet.GetComponent<Planet>();
+        playerMovement.RefreshMovementInfo();
         playerMovement.canMove = true;
 
     }
