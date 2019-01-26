@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
         int cap = 0;
         int targetIndex = currentMovementIndex + 1;
-
+        Vector3 up = new Vector3();
         //player rotation perpendicular
         switch (currentShapeType)
         { 
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
-                transform.up = NormalVectorBetweenTwo(currentPlanet.movementCircle[currentMovementIndex].transform.position, currentPlanet.movementCircle[targetIndex].transform.position);
+                up = NormalVectorBetweenTwo(currentPlanet.movementCircle[currentMovementIndex].transform.position, currentPlanet.movementCircle[targetIndex].transform.position);
                 break;
             case ShapeType.tri:
                 cap = currentPlanet.movementTri.Count;
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
-                transform.up = NormalVectorBetweenTwo(currentPlanet.movementTri[currentMovementIndex].transform.position, currentPlanet.movementTri[targetIndex].transform.position);
+                up = NormalVectorBetweenTwo(currentPlanet.movementTri[currentMovementIndex].transform.position, currentPlanet.movementTri[targetIndex].transform.position);
                 break;
             case ShapeType.quad:
                 cap = currentPlanet.movementQuad.Count;
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
-                transform.up = NormalVectorBetweenTwo(currentPlanet.movementQuad[currentMovementIndex].transform.position, currentPlanet.movementQuad[targetIndex].transform.position);
+                up = NormalVectorBetweenTwo(currentPlanet.movementQuad[currentMovementIndex].transform.position, currentPlanet.movementQuad[targetIndex].transform.position);
                 break;
             case ShapeType.esa:
                 cap = currentPlanet.movementEsa.Count;
@@ -82,11 +82,12 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
-                transform.up = NormalVectorBetweenTwo(currentPlanet.movementEsa[currentMovementIndex].transform.position, currentPlanet.movementEsa[targetIndex].transform.position);
+                up = NormalVectorBetweenTwo(currentPlanet.movementEsa[currentMovementIndex].transform.position, currentPlanet.movementEsa[targetIndex].transform.position);
                 break;
         }
+        transform.up = Vector3.Lerp(transform.up, up, 0.2f);
 
-        if(horizontalMovement == 1)
+        if (horizontalMovement == 1)
         {
             Look(Directions.Right);
         }
@@ -307,6 +308,7 @@ public class PlayerMovement : MonoBehaviour
         return Vector2.Perpendicular(secondVector - firstVector);
     }
 
+    
 	#endregion
 
 }
