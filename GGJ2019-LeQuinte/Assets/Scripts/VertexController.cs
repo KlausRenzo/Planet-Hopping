@@ -7,14 +7,14 @@ using UnityEngine;
 public class VertexController : MonoBehaviour
 {
     public static VertexController Instance = null;
-    public List<Vertex> Vertexes = new List<Vertex>();
+    public List<Vector3> Vertexes = new List<Vector3>();
     public int vertexIndex = 0;
     private int nextVertexIndex => vertexIndex.Next();
     public Vector3 SideVector => CalculateSideVector();
     public Vector3 NormalVector => CalculateNormalVector();
     public PlayerContoller Player;
-    public Vector3 CurrentVertexPosition => Vertexes[vertexIndex].transform.position;
-    public Vector3 NextVertexPosition => Vertexes[vertexIndex.Next()].transform.position;
+    public Vector3 CurrentVertexPosition => Vertexes[vertexIndex];
+    public Vector3 NextVertexPosition => Vertexes[vertexIndex.Next()];
 
 
     private float JumpTimeStart;
@@ -43,7 +43,7 @@ public class VertexController : MonoBehaviour
 
         for (int i = 0; i < Vertexes.Count; i++)
         {
-            Gizmos.DrawLine(Vertexes[i].transform.position, Vertexes[i.Next()].transform.position);
+            Gizmos.DrawLine(Vertexes[i], Vertexes[i.Next()]);
         }
 
         Gizmos.color = Color.blue;
@@ -54,8 +54,8 @@ public class VertexController : MonoBehaviour
     {
         for (var i = 0; i < Vertexes.Count; i++)
         {
-            Vertex vertex = Vertexes[i];
-            Vertex nextVertex = Vertexes[i.Next()];
+            Vector3 vertex = Vertexes[i];
+            Vector3 nextVertex = Vertexes[i.Next()];
             vertex.transform.rotation = Quaternion.LookRotation(nextVertex.transform.position);
             BoxCollider box = vertex.gameObject.AddComponent<BoxCollider>();
             box.size = new Vector3(0.1f, CalculateSideVector(i).x, 0.1f);
