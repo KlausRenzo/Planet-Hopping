@@ -64,14 +64,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722042379401576}
-  m_LocalRotation: {x: -0, y: -0, z: 0.030654617, w: 0.99953}
-  m_LocalPosition: {x: 0.05, y: 1.72, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.015479752, w: 0.9998802}
+  m_LocalPosition: {x: 0.207, y: 1.748, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4139100716143982}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 3.5130002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.774}
 --- !u!82 &82335495549876244
 AudioSource:
   m_ObjectHideFlags: 1
@@ -204,8 +204,18 @@ MonoBehaviour:
   playerSpeed: 0.01
   currentPlanet: {fileID: 0}
   canMove: 1
+  playerWalking:
+  - {fileID: 8300000, guid: dfc928a88c2ed38458f1de8ccd896f8c, type: 3}
+  - {fileID: 8300000, guid: eec57667b65625441a2ef630c27c6bda, type: 3}
+  - {fileID: 8300000, guid: a80a23f0604936e4cbe0993571f16706, type: 3}
+  planetHopSound: {fileID: 8300000, guid: 66c5c775af393f741be97bd5405af2fc, type: 3}
+  jumpSound: {fileID: 8300000, guid: 3402f8e2677b86d469b231a59f991cad, type: 3}
+  landingSound: {fileID: 0}
+  pickupAtmosphere: {fileID: 8300000, guid: 2e4d8a6f48f522e4a8f036e04d0035db, type: 3}
+  pickupTree: {fileID: 8300000, guid: 7af7b1e3d8e32ad4881df03d82a57b35, type: 3}
+  pickupRock: {fileID: 8300000, guid: 4415cf819a23e7d49a7d443d3cc09164, type: 3}
+  pickupSea: {fileID: 8300000, guid: 1e4bd32b1715e0247bcb7c261425c1d4, type: 3}
   currentDirection: 0
-  currentMovementIndex: 0
   isJumping: 0
 --- !u!212 &212329149020108716
 SpriteRenderer:

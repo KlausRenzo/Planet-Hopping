@@ -5,6 +5,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour 
 {
 
+    public enum SoundKeys
+    {
+        Walk,
+        Hop,
+        Jump,
+        Land,
+        Atmos,
+        Tree,
+        Rock,
+        Sea,
+    }
+
     #region Fields
 
     public KeyCode moveLeft;
@@ -18,12 +30,22 @@ public class PlayerMovement : MonoBehaviour
     public Planet currentPlanet;
     public bool canMove = false;
 
+    public List<AudioClip> playerWalking;
+    public AudioClip planetHopSound;
+    public AudioClip jumpSound;
+    public AudioClip landingSound;
+    public AudioClip pickupAtmosphere;
+    public AudioClip pickupTree;
+    public AudioClip pickupRock;
+    public AudioClip pickupSea;
+
     [HideInInspector]
     public Directions currentDirection;
 
     private float currentLerpIndex;
-    public int currentMovementIndex;
+    private int currentMovementIndex;
     private float currentLerp;
+    private AudioSource audioSource;
     private ShapeType currentShapeType;
     private int horizontalMovement;
     private Animator anim;
@@ -37,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -308,7 +331,37 @@ public class PlayerMovement : MonoBehaviour
         return Vector2.Perpendicular(secondVector - firstVector);
     }
 
-    
+    public void PlaySound(SoundKeys soundKey)
+    {
+        switch(soundKey)
+        {
+            case SoundKeys.Walk:
+                audioSource.PlayOneShot(playerWalking[Random.Range(0, playerWalking.Count)]);
+                break;
+            case SoundKeys.Hop:
+                audioSource.PlayOneShot(planetHopSound);
+                break;
+            case SoundKeys.Jump:
+                audioSource.PlayOneShot(jumpSound);
+                break;
+            case SoundKeys.Land:
+                audioSource.PlayOneShot(landingSound);
+                break;
+            case SoundKeys.Tree:
+                audioSource.PlayOneShot(pickupTree);
+                break;
+            case SoundKeys.Rock:
+                audioSource.PlayOneShot(pickupRock);
+                break;
+            case SoundKeys.Sea:
+                audioSource.PlayOneShot(pickupSea);
+                break;
+            case SoundKeys.Atmos:
+                audioSource.PlayOneShot(pickupAtmosphere);
+                break;
+        }
+    }
+
 	#endregion
 
 }

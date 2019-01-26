@@ -244,11 +244,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4434266701950370, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.05
+      value: 0.207
       objectReference: {fileID: 0}
     - target: {fileID: 4434266701950370, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.72
+      value: 1.748
       objectReference: {fileID: 0}
     - target: {fileID: 4434266701950370, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -264,11 +264,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4434266701950370, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.030654617
+      value: 0.015479752
       objectReference: {fileID: 0}
     - target: {fileID: 4434266701950370, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.99953
+      value: 0.9998802
       objectReference: {fileID: 0}
     - target: {fileID: 4434266701950370, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
       propertyPath: m_RootOrder
@@ -279,6 +279,15 @@ Prefab:
       propertyPath: currentPlanet
       value: 
       objectReference: {fileID: 1113256868}
+    - target: {fileID: 82335495549876244, guid: f3db5c0a6fc22504596b74a5f6d9417d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434266701950370, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1.774
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
   m_IsPrefabAsset: 0
