@@ -12,9 +12,13 @@ public enum ShapeType
 
 public enum ColorType
 {
-    black,
+    purple,
     red,
     green,
-    white,
     blue,
+}
+
+public enum ProbabilityType
+{
+
 }

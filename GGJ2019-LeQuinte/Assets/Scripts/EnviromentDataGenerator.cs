@@ -43,7 +43,7 @@ public class EnviromentDataGenerator : MonoBehaviour
         {
             string currentEndingPath = endingPath + "/" + envType + "/";
 
-            if (envType == "Atmospheres")
+            if (envType == "atmospheres")
             {
                 foreach (string color in colorTypes)
                 {
@@ -59,7 +59,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     EditorUtility.SetDirty(newAtmosphere);
                 }
             }
-            else if (envType == "Seas")
+            else if (envType == "seas")
             {
                 foreach (string color in colorTypes)
                 {
@@ -84,7 +84,7 @@ public class EnviromentDataGenerator : MonoBehaviour
         {
             string currentEndingPath = endingPath + "/" + envType + "/";
 
-            if (envType == "Rocks")
+            if (envType == "rocks")
             {
                 foreach (string shape in shapeTypes)
                 {
@@ -100,7 +100,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     EditorUtility.SetDirty(newRock);
                 }
             }
-            else if (envType == "Fauna")
+            else if (envType == "fauna")
             {
                 foreach (string shape in shapeTypes)
                 {
@@ -125,7 +125,7 @@ public class EnviromentDataGenerator : MonoBehaviour
         {
             string currentEndingPath = endingPath + "/" + envType + "/";
 
-            if (envType == "PlanetAppearances")
+            if (envType == "planetappearances")
             {
                 foreach (string color in colorTypes)
                 {
@@ -145,7 +145,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     }
                 }
             }
-            else if (envType == "Trees")
+            else if (envType == "trees")
             {
                 foreach (string color in colorTypes)
                 {

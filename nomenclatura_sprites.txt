@@ -1,15 +1,14 @@
-color_Atmospheres
-color_Seas
-shape_Rocks
-shape_Fauna
-color_shape_PlanetAppearances
-color_shape_Trees
+color_atmospheres
+color_seas
+shape_rocks
+shape_fauna
+color_shape_planetappearances
+color_shape_trees
 
 Colors:
-black
+purple
 red
 green
-white
 blue
 
 Shapes:

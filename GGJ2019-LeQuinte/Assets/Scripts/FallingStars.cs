@@ -36,7 +36,7 @@ public class FallingStars : MonoBehaviour
         int starsToSpawn = (int)Random.Range(starsAmountMinMax.x, starsAmountMinMax.y);
         for (int i = 0; i < starsToSpawn; i++)
         {
-            GameObject newStar = Instantiate(fallingStar);
+            GameObject newStar = Instantiate(fallingStar, transform);
             newStar.transform.position = new Vector2(Random.Range(-9f,9f), Random.Range(-5f,5f));
             newStar.GetComponent<Animator>().speed = Random.Range(0.5f,2f);
             newStar.transform.Rotate(Vector3.forward, Random.Range(30f, 60f));
