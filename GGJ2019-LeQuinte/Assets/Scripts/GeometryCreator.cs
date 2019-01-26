@@ -28,7 +28,6 @@ public class GeometryCreator : MonoBehaviour
         averageDistance = averageDistance / Points.Count;
         if (counter < Points.Count / 10)
         {
-            Debug.Log("Cerchio");
             CircleController c = gameObject.AddComponent<CircleController>();
             //TODO: Better initialization of CircleController, with player find
             c.Player = GameObject.Find("player").GetComponent<PlayerContoller>();
@@ -47,7 +46,6 @@ public class GeometryCreator : MonoBehaviour
                 newVertexes.Add(v3 + sprite.transform.position);
             }
             v.Vertexes = newVertexes;
-            Debug.Log("Geometria");
             GameObject parent = new GameObject();
             parent.transform.position = sprite.transform.position;
             foreach (Vector3 point in Points)
