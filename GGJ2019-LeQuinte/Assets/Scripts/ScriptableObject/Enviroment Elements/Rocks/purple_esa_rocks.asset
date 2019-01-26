@@ -9,7 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56b6624a657f920449207d5dfc06efa8, type: 3}
-  m_Name: esa_rocks
+  m_Name: purple_esa_rocks
   m_EditorClassIdentifier: 
-  enviromentSprite: {fileID: 0}
+  enviromentSprite: {fileID: 21300000, guid: 3ada277a4e8d4fb489e86af5722a3b42, type: 3}
   shapeType: 2
+  colorType: 0

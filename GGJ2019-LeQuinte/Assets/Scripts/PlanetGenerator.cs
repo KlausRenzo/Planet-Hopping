@@ -58,6 +58,8 @@ public class PlanetGenerator : MonoBehaviour
             newPlanet.atmosphere.sprite = newPlanet.planetInfos.atmosphereType.enviromentSprite;
         }
 
+        //generate all the little assets
+
         return newPlanetObject;
     }
 
@@ -106,11 +108,11 @@ public class PlanetGenerator : MonoBehaviour
 
         if (IsMainProbabilityType(ProbabilityType.Shape))
         {
-            newPlanetInfo.rockType = dataGenerator.generatedRocks[GetFilteredEnviromentListIndex(dataGenerator.generatedRocks, mainShape)];
+            newPlanetInfo.rockType = dataGenerator.generatedRocks[GetFilteredEnviromentListIndex(dataGenerator.generatedRocks, newPlanetInfo.planetAppearanceType.colorType, mainShape)];
         }
         else
         {
-            newPlanetInfo.rockType = dataGenerator.generatedRocks[GetFilteredEnviromentListIndex(dataGenerator.generatedRocks, dataGenerator.GetComplementaryShapeType(mainShape))];
+            newPlanetInfo.rockType = dataGenerator.generatedRocks[GetFilteredEnviromentListIndex(dataGenerator.generatedRocks, newPlanetInfo.planetAppearanceType.colorType, dataGenerator.GetComplementaryShapeType(mainShape))];
         }
 
         if (IsMainProbabilityType(ProbabilityType.Shape))
@@ -192,13 +194,13 @@ public class PlanetGenerator : MonoBehaviour
         return index;
     }
 
-    private int GetFilteredEnviromentListIndex(List<Rock> list, ShapeType shapeType)
+    private int GetFilteredEnviromentListIndex(List<Rock> list, ColorType colorType, ShapeType shapeType)
     {
         int index;
 
         for (index = 0; index < list.Count; index++)
         {
-            if (list[index].shapeType == shapeType)
+            if (list[index].shapeType == shapeType && list[index].colorType == colorType)
             {
                 return index;
             }

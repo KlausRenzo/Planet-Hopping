@@ -67,10 +67,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aa7d695b0a65d014096966ce906edada, type: 2}
   - {fileID: 11400000, guid: a7f6c5cbbb4eeb24286526369ef5c1a8, type: 2}
   generatedRocks:
-  - {fileID: 11400000, guid: 707eec684bd212f468bdc384bd4ebd8d, type: 2}
-  - {fileID: 11400000, guid: b694b556dd53b90438d9980647d7ac60, type: 2}
-  - {fileID: 11400000, guid: 0fc97b9c474cf444c95151100d78e5ed, type: 2}
-  - {fileID: 11400000, guid: e160c90ca37c9ae47a0bf0f519c06777, type: 2}
+  - {fileID: 11400000, guid: 9b0a083eb2d75b344ab881d05ad54957, type: 2}
+  - {fileID: 11400000, guid: 9b705c560e3d6e04ca23be3212b8e816, type: 2}
+  - {fileID: 11400000, guid: 35a795249ff3c444a886e35a84f3f0e9, type: 2}
+  - {fileID: 11400000, guid: 16236a261a5e5de46a9281a1053d45ad, type: 2}
+  - {fileID: 11400000, guid: 196b8395baa0cfb49a30a41af64ecf2d, type: 2}
+  - {fileID: 11400000, guid: 9333fa7a85adddc4dadca8e44ee88947, type: 2}
+  - {fileID: 11400000, guid: 32cb5e33f0f9ae24e8ac056a3b414aef, type: 2}
+  - {fileID: 11400000, guid: 209d1151efe54cc499c1238462b4bd2b, type: 2}
+  - {fileID: 11400000, guid: 1eb3563bfd43df44991cf233f5ed2fc9, type: 2}
+  - {fileID: 11400000, guid: 93d9047894819bf4cacc62ee88dee107, type: 2}
+  - {fileID: 11400000, guid: 230e526b6704ff249a58b79a4423e54e, type: 2}
+  - {fileID: 11400000, guid: f9a28d34efa80ec4daff58907da9dbdd, type: 2}
+  - {fileID: 11400000, guid: 02d53c6b9274db64bb6bfc9602b93aad, type: 2}
+  - {fileID: 11400000, guid: 8f59ccef88ed0d741a001b84b37d7da1, type: 2}
+  - {fileID: 11400000, guid: 1be2071027340bf4ab6bef7ca485d223, type: 2}
+  - {fileID: 11400000, guid: ccc4cc4605098b84bb63f335a3fa3101, type: 2}
   generatedTrees:
   - {fileID: 11400000, guid: a5fe4eab2eaf0374686e2369768f8a66, type: 2}
   - {fileID: 11400000, guid: 89a61008d788fb1478e993ebb55dbda8, type: 2}
@@ -127,9 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previewsToGenerateEveryTime: 3
-  minMaxGeneratedPlanetSpeed: {x: 0.5, y: 2}
-  minMaxGeneratedBgCloudsSpeed: {x: 0.5, y: 2}
-  minMaxGeneratedFgCloudsSpeed: {x: 0.5, y: 2}
+  minMaxGeneratedPlanetSpeed: {x: 0.5, y: 3}
+  minMaxGeneratedBgCloudsSpeed: {x: 0.5, y: 3}
+  minMaxGeneratedFgCloudsSpeed: {x: 0.5, y: 3}
   mainShapeProbability: 36
   secondaryShapeProbability: 32
   mainColorProbability: 36
@@ -138,5 +150,5 @@ MonoBehaviour:
   currentPlanet: {fileID: 0}
   nextPlanetInfos:
   - {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156, type: 2}
-  - {fileID: 11400000, guid: 4f25328b79747c04b9b08914304b33b0, type: 2}
-  - {fileID: 11400000, guid: 213431df692c4ee4a8ccfba808cd7e7b, type: 2}
+  - {fileID: 11400000, guid: baf5dfbd01c85ce4ab74fc70a9babe91, type: 2}
+  - {fileID: 11400000, guid: de839c46456418b4f915c0eb713e2d1e, type: 2}

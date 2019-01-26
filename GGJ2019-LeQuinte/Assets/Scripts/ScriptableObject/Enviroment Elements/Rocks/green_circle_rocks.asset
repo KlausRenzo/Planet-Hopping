@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b6624a657f920449207d5dfc06efa8, type: 3}
+  m_Name: green_circle_rocks
+  m_EditorClassIdentifier: 
+  enviromentSprite: {fileID: 21300000, guid: e14c62e54f9e20d42b7074f0228e2374, type: 3}
+  shapeType: 3
+  colorType: 2

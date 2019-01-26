@@ -82,13 +82,17 @@ public class EnviromentDataGenerator : MonoBehaviour
             {
                 foreach (string shape in shapeTypes)
                 {
-                    Rock newRock = ScriptableObject.CreateInstance<Rock>();
-                    newRock.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + shape + "_" + envType + ".png", typeof(Sprite));
-                    newRock.name = shape + "_" + envType;
-                    newRock.shapeType = GetShapeType(shape);
-                    AssetDatabase.CreateAsset(newRock, currentEndingPath + newRock.name + ".asset");
-                    generatedRocks.Add(newRock);
-                    EditorUtility.SetDirty(newRock);
+                    foreach (string color in colorTypes)
+                    {
+                        Rock newRock = ScriptableObject.CreateInstance<Rock>();
+                        newRock.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + shape + "_" + envType + ".png", typeof(Sprite));
+                        newRock.name = color + "_" + shape + "_" + envType;
+                        newRock.shapeType = GetShapeType(shape);
+                        newRock.colorType = GetColorType(color);
+                        AssetDatabase.CreateAsset(newRock, currentEndingPath + newRock.name + ".asset");
+                        generatedRocks.Add(newRock);
+                        EditorUtility.SetDirty(newRock);
+                    }
                 }
             }
             else if (envType == "fauna")

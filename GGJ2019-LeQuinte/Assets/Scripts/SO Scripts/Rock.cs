@@ -9,6 +9,7 @@ public class Rock : EnviromentElement
     #region Fields
 
     public ShapeType shapeType;
+    public ColorType colorType;
 
     #endregion
 

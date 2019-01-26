@@ -9,7 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56b6624a657f920449207d5dfc06efa8, type: 3}
-  m_Name: circle_Rocks
+  m_Name: purple_quad_rocks
   m_EditorClassIdentifier: 
-  enviromentSprite: {fileID: 0}
-  shapeType: 3
+  enviromentSprite: {fileID: 21300000, guid: 33fe9a37401da654aa30f586e9cd73d8, type: 3}
+  shapeType: 1
+  colorType: 0

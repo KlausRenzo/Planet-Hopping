@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a54c238c5338af942a837947318e2431, type: 3}
-  m_Name: blue_circle_Trees
+  m_Name: blue_circle_trees
   m_EditorClassIdentifier: 
-  enviromentSprite: {fileID: 0}
+  enviromentSprite: {fileID: 21300000, guid: 2fb1b2b1e54c24e4ab733f5f95e5e1ca, type: 3}
   shapeType: 3
   colorType: 3
