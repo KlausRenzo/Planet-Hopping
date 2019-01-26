@@ -1,14 +1,14 @@
 PIANETI
-tondo nero
-tondo rosso
-tondo verde
-tondo bianco
-tondo blu
-pentagono nero
-pentagono rosso
-pentagono verde
-pentagono bianco
-pentaogno blu
+tondo nero V
+tondo rosso V
+tondo verde V
+tondo bianco V
+tondo blu V
+pentagono nero V
+pentagono rosso V
+pentagono verde V
+pentagono bianco V
+pentaogno blu V
 quad nero
 quad rosso
 quad verde
@@ -36,11 +36,11 @@ quad rosso
 quad verde
 quad bianco
 quad blu
-tri nero
-tri rosso
-tri verde
-tri bianco
-tri blu
+tri nero V
+tri rosso V
+tri verde V
+tri bianco V
+tri blu V
 
 MARE
 nero
@@ -52,15 +52,14 @@ blu
 ROCCIA
 tondo
 penta
-quad
-tri
+quad V
+tri V
 
 ATMO
-nero
-rosso
-verde
-bianco
-blu
+rosso V
+verde V
+bianco V
+blu V
 
 FAUNA
 tondo
