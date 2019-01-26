@@ -570,7 +570,8 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 1
   webGLLinkerTarget: 1
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: ODIN_INSPECTOR
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
@@ -649,7 +650,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 756e7dd5-d69d-4d1b-812b-a7cd910fbafd
   projectName: GGJ2019-LeQuinte
   organizationId: akidamaru173

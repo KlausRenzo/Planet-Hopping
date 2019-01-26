@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        for (int i = 0; i < Vertexes.Count; i++)
+        for (int i = 0; i < Vertexes.Count - 2; i++)
         {
             Vertex a = Vertexes[i];
             Vertex b = Vertexes[i.Next()];
