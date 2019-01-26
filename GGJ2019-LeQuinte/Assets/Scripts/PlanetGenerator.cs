@@ -68,6 +68,7 @@ public class PlanetGenerator : MonoBehaviour
         newPlanetInfo.planetAppearanceType = dataGenerator.generatedPlanetAppearances[UnityEngine.Random.Range(0, dataGenerator.generatedPlanetAppearances.Count)];
 
         ColorType mainColor = newPlanetInfo.planetAppearanceType.colorType;
+        ShapeType mainShape = newPlanetInfo.planetAppearanceType.shapeType;
 
         if (IsMainProbabilityType(ProbabilityType.Color))
         {
@@ -78,8 +79,6 @@ public class PlanetGenerator : MonoBehaviour
             newPlanetInfo.atmosphereType = dataGenerator.generatedAtmospheres[GetFilteredEnviromentListIndex(dataGenerator.generatedAtmospheres, dataGenerator.GetComplementaryColorType(mainColor))];
         }
 
-        mainColor = newPlanetInfo.planetAppearanceType.colorType;
-
         if (IsMainProbabilityType(ProbabilityType.Color))
         {
             newPlanetInfo.seaType = dataGenerator.generatedSeas[GetFilteredEnviromentListIndex(dataGenerator.generatedSeas, mainColor)];
@@ -88,8 +87,6 @@ public class PlanetGenerator : MonoBehaviour
         {
             newPlanetInfo.seaType = dataGenerator.generatedSeas[GetFilteredEnviromentListIndex(dataGenerator.generatedSeas, dataGenerator.GetComplementaryColorType(mainColor))];
         }
-
-        ShapeType mainShape = newPlanetInfo.planetAppearanceType.shapeType;
 
         if (IsMainProbabilityType(ProbabilityType.Shape))
         {
@@ -100,8 +97,6 @@ public class PlanetGenerator : MonoBehaviour
             newPlanetInfo.rockType = dataGenerator.generatedRocks[GetFilteredEnviromentListIndex(dataGenerator.generatedRocks, dataGenerator.GetComplementaryShapeType(mainShape))];
         }
 
-        mainShape = newPlanetInfo.planetAppearanceType.shapeType;
-
         if (IsMainProbabilityType(ProbabilityType.Shape))
         {
             newPlanetInfo.faunaType = dataGenerator.generatedFauna[GetFilteredEnviromentListIndex(dataGenerator.generatedFauna, mainShape)];
@@ -110,9 +105,6 @@ public class PlanetGenerator : MonoBehaviour
         {
             newPlanetInfo.faunaType = dataGenerator.generatedFauna[GetFilteredEnviromentListIndex(dataGenerator.generatedFauna, dataGenerator.GetComplementaryShapeType(mainShape))];
         }
-
-        mainColor = newPlanetInfo.planetAppearanceType.colorType;
-        mainShape = newPlanetInfo.planetAppearanceType.shapeType;
 
         if (IsMainProbabilityType(ProbabilityType.Shape))
         {
@@ -156,45 +148,75 @@ public class PlanetGenerator : MonoBehaviour
 
     private int GetFilteredEnviromentListIndex(List<Atmosphere> list, ColorType colorType)
     {
-        int index = 0;
+        int index;
 
-
+        for (index = 0; index < list.Count; index++)
+        {
+            if(list[index].colorType == colorType)
+            {
+                return index;
+            }
+        }
 
         return index;
     }
 
     private int GetFilteredEnviromentListIndex(List<Sea> list, ColorType colorType)
     {
-        int index = 0;
+        int index;
 
-
+        for (index = 0; index < list.Count; index++)
+        {
+            if (list[index].colorType == colorType)
+            {
+                return index;
+            }
+        }
 
         return index;
     }
 
     private int GetFilteredEnviromentListIndex(List<Rock> list, ShapeType shapeType)
     {
-        int index = 0;
+        int index;
 
-
+        for (index = 0; index < list.Count; index++)
+        {
+            if (list[index].shapeType == shapeType)
+            {
+                return index;
+            }
+        }
 
         return index;
     }
 
     private int GetFilteredEnviromentListIndex(List<Fauna> list, ShapeType shapeType)
     {
-        int index = 0;
+        int index;
 
-
+        for (index = 0; index < list.Count; index++)
+        {
+            if (list[index].shapeType == shapeType)
+            {
+                return index;
+            }
+        }
 
         return index;
     }
 
     private int GetFilteredEnviromentListIndex(List<Tree> list, ColorType colorType, ShapeType shapeType)
     {
-        int index = 0;
+        int index;
 
-
+        for (index = 0; index < list.Count; index++)
+        {
+            if (list[index].shapeType == shapeType && list[index].colorType == colorType)
+            {
+                return index;
+            }
+        }
 
         return index;
     }
