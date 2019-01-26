@@ -10,13 +10,13 @@ static class Extension
 
     public static int Next(this int previous)
     {
-        int max = GameManager.Instance.Vertexes.Count;
+        int max = VertexController.Instance.Vertexes.Count;
 
         return (previous + 1 >= max) ? 0 : previous + 1;
     }
     public static int Previous(this int next)
     {
-        int max = GameManager.Instance.Vertexes.Count;
+        int max = VertexController.Instance.Vertexes.Count;
 
         return (next - 1 < 0) ? max - 1 : next - 1;
     }
