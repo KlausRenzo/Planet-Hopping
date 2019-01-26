@@ -32,7 +32,7 @@ public class VertexController : MonoBehaviour
     {
         if (Application.isEditor)
         {
-            return;
+            //return;
         }
 
         for (int i = 0; i < Vertexes.Count; i++)

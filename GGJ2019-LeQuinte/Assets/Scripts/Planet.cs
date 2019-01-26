@@ -31,7 +31,7 @@ public class Planet : MonoBehaviour
     public void PlanetTick()
     {
         terrain.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed);
-        grass.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed);
+        //grass.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed);
         bgClouds.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed/2f);
         fgClouds.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed/2f*3f);
     }
