@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "_tree", menuName = "Enviroment Element/Tree")]
-public class Tree : EnviromentElement 
+[CreateAssetMenu(fileName = "_planetappearance", menuName = "Enviroment Element/PlanetAppearance")]
+public class PlanetAppearance : EnviromentElement 
 {
 
     #region Fields

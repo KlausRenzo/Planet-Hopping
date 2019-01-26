@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "_tree", menuName = "Enviroment Element/Tree")]
-public class Tree : EnviromentElement 
+[CreateAssetMenu(fileName = "_atmosphere", menuName = "Enviroment Element/Atmosphere")]
+public class Atmosphere : EnviromentElement 
 {
 
     #region Fields
 
-    public ShapeType shapeType;
     public ColorType colorType;
 
     #endregion

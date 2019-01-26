@@ -4,17 +4,17 @@ using UnityEngine;
 
 public enum ShapeType
 {
-    Tri,
-    Quad,
-    Penta,
-    Circle,
+    tri,
+    quad,
+    penta,
+    circle,
 }
 
 public enum ColorType
 {
-    Black,
-    Red,
-    Green,
-    White,
-    Blue,
+    black,
+    red,
+    green,
+    white,
+    blue,
 }
