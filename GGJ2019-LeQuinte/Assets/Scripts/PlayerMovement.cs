@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour 
+public class PlayerMovement : MonoBehaviour
 {
-
     #region Fields
 
     public KeyCode moveLeft;
@@ -17,8 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public Planet currentPlanet;
     public bool canMove = false;
 
-    [HideInInspector]
-    public Directions currentDirection;
+    [HideInInspector] public Directions currentDirection;
 
     private float currentLerpIndex;
     public int currentMovementIndex;
@@ -49,13 +47,14 @@ public class PlayerMovement : MonoBehaviour
         Vector3 up = new Vector3();
         //player rotation perpendicular
         switch (currentShapeType)
-        { 
+        {
             case ShapeType.circle:
                 cap = currentPlanet.movementCircle.Count;
-                if(targetIndex == cap)
+                if (targetIndex == cap)
                 {
                     targetIndex = 0;
                 }
+
                 up = NormalVectorBetweenTwo(currentPlanet.movementCircle[currentMovementIndex].transform.position, currentPlanet.movementCircle[targetIndex].transform.position);
                 break;
             case ShapeType.tri:
@@ -64,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
+
                 up = NormalVectorBetweenTwo(currentPlanet.movementTri[currentMovementIndex].transform.position, currentPlanet.movementTri[targetIndex].transform.position);
                 break;
             case ShapeType.quad:
@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
+
                 up = NormalVectorBetweenTwo(currentPlanet.movementQuad[currentMovementIndex].transform.position, currentPlanet.movementQuad[targetIndex].transform.position);
                 break;
             case ShapeType.esa:
@@ -80,9 +81,11 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
+
                 up = NormalVectorBetweenTwo(currentPlanet.movementEsa[currentMovementIndex].transform.position, currentPlanet.movementEsa[targetIndex].transform.position);
                 break;
         }
+
         transform.up = Vector3.Lerp(transform.up, up, 0.2f);
 
         if (horizontalMovement == 1)
@@ -109,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalMovement--;
         }
+
         if (Input.GetKey(moveRight))
         {
             horizontalMovement++;
@@ -118,9 +122,10 @@ public class PlayerMovement : MonoBehaviour
         {
             startJumpTime = Time.time;
         }
+
         if (Input.GetKeyUp(jump))
         {
-            if(Time.time - startJumpTime <= 0)
+            if (Time.time - startJumpTime <= 0)
             {
                 //planetHop
             }
@@ -191,17 +196,56 @@ public class PlayerMovement : MonoBehaviour
         switch (currentShapeType)
         {
             case ShapeType.circle:
-                transform.position = Vector3.Lerp(currentPlanet.movementCircle[currentMovementIndex].transform.position, currentPlanet.movementCircle[(currentMovementIndex + 1) % cap].transform.position, currentLerpIndex % 1);
+                transform.position = Vector3.Lerp(currentPlanet.movementCircle[currentMovementIndex].transform.position, currentPlanet.movementCircle[(currentMovementIndex + 1) % cap].transform.position,
+                    currentLerpIndex % 1);
                 break;
             case ShapeType.tri:
                 transform.position = Vector3.Lerp(currentPlanet.movementTri[currentMovementIndex].transform.position, currentPlanet.movementTri[(currentMovementIndex + 1) % cap].transform.position, currentLerpIndex % 1);
                 break;
             case ShapeType.quad:
-                transform.position = Vector3.Lerp(currentPlanet.movementQuad[currentMovementIndex].transform.position, currentPlanet.movementQuad[(currentMovementIndex + 1) % cap].transform.position, currentLerpIndex % 1);
+                transform.position = Vector3.Lerp(currentPlanet.movementQuad[currentMovementIndex].transform.position, currentPlanet.movementQuad[(currentMovementIndex + 1) % cap].transform.position,
+                    currentLerpIndex % 1);
                 break;
             case ShapeType.esa:
                 transform.position = Vector3.Lerp(currentPlanet.movementEsa[currentMovementIndex].transform.position, currentPlanet.movementEsa[(currentMovementIndex + 1) % cap].transform.position, currentLerpIndex % 1);
                 break;
+        }
+    }
+
+    public void AgentLerp()
+    {
+        RefreshMovementInfo();
+        bool stop = false;
+        while (!stop)
+        {
+            int cap = GetCurrentShapeCap();
+            Debug.Log($"agent lerping: {currentLerpIndex}");
+            currentLerpIndex += (Time.deltaTime) / CalculateVectorDistace();
+            if (currentLerpIndex >= cap)
+                stop = true;
+            currentLerpIndex = (currentLerpIndex + cap) % cap;
+
+            currentMovementIndex = Mathf.FloorToInt(currentLerpIndex);
+
+            switch (currentShapeType)
+            {
+                case ShapeType.circle:
+                    transform.position = Vector3.Lerp(currentPlanet.movementCircle[currentMovementIndex].transform.position, currentPlanet.movementCircle[(currentMovementIndex + 1) % cap].transform.position,
+                        currentLerpIndex % 1);
+                    break;
+                case ShapeType.tri:
+                    transform.position = Vector3.Lerp(currentPlanet.movementTri[currentMovementIndex].transform.position, currentPlanet.movementTri[(currentMovementIndex + 1) % cap].transform.position,
+                        currentLerpIndex % 1);
+                    break;
+                case ShapeType.quad:
+                    transform.position = Vector3.Lerp(currentPlanet.movementQuad[currentMovementIndex].transform.position, currentPlanet.movementQuad[(currentMovementIndex + 1) % cap].transform.position,
+                        currentLerpIndex % 1);
+                    break;
+                case ShapeType.esa:
+                    transform.position = Vector3.Lerp(currentPlanet.movementEsa[currentMovementIndex].transform.position, currentPlanet.movementEsa[(currentMovementIndex + 1) % cap].transform.position,
+                        currentLerpIndex % 1);
+                    break;
+            }
         }
     }
 
@@ -220,6 +264,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
+
                 vectorsDistance = Vector2.Distance(currentPlanet.movementCircle[currentMovementIndex].transform.position, currentPlanet.movementCircle[targetIndex].transform.position);
                 break;
             case ShapeType.tri:
@@ -229,6 +274,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
+
                 vectorsDistance = Vector2.Distance(currentPlanet.movementTri[currentMovementIndex].transform.position, currentPlanet.movementTri[targetIndex].transform.position);
                 break;
             case ShapeType.quad:
@@ -238,6 +284,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
+
                 vectorsDistance = Vector2.Distance(currentPlanet.movementQuad[currentMovementIndex].transform.position, currentPlanet.movementQuad[targetIndex].transform.position);
                 break;
             case ShapeType.esa:
@@ -247,6 +294,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     targetIndex = 0;
                 }
+
                 vectorsDistance = Vector2.Distance(currentPlanet.movementEsa[currentMovementIndex].transform.position, currentPlanet.movementEsa[targetIndex].transform.position);
                 break;
         }
@@ -282,7 +330,5 @@ public class PlayerMovement : MonoBehaviour
         return Vector2.Perpendicular(secondVector - firstVector);
     }
 
-    
-	#endregion
-
+    #endregion
 }
