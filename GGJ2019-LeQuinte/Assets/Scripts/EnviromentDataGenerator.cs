@@ -215,12 +215,12 @@ public class EnviromentDataGenerator : MonoBehaviour
 
     private ColorType GetColorType(string color)
     {
-        ColorType type = ColorType.black;
+        ColorType type = ColorType.purple;
 
         switch(color)
         {
             case "black":
-                type = ColorType.black;
+                type = ColorType.purple;
                 break;
             case "red":
                 type = ColorType.red;
@@ -228,11 +228,61 @@ public class EnviromentDataGenerator : MonoBehaviour
             case "green":
                 type = ColorType.green;
                 break;
-            case "white":
-                type = ColorType.white;
-                break;
             case "blue":
                 type = ColorType.blue;
+                break;
+        }
+
+        return type;
+    }
+
+    public ColorType GetComplementaryColorType(ColorType colorType)
+    {
+        ColorType type = ColorType.purple;
+
+        int rand = Random.Range(0, 2);
+
+        switch (colorType)
+        {
+            case ColorType.purple:
+                if (rand == 0)
+                {
+                    type = ColorType.blue;
+                }
+                else
+                {
+                    type = ColorType.red;
+                }
+                break;
+            case ColorType.red:
+                if (rand == 0)
+                {
+                    type = ColorType.purple;
+                }
+                else
+                {
+                    type = ColorType.green;
+                }
+                break;
+            case ColorType.green:
+                if (rand == 0)
+                {
+                    type = ColorType.red;
+                }
+                else
+                {
+                    type = ColorType.blue;
+                }
+                break;
+            case ColorType.blue:
+                if (rand == 0)
+                {
+                    type = ColorType.green;
+                }
+                else
+                {
+                    type = ColorType.purple;
+                }
                 break;
         }
 
@@ -251,8 +301,8 @@ public class EnviromentDataGenerator : MonoBehaviour
             case "quad":
                 type = ShapeType.quad;
                 break;
-            case "penta":
-                type = ShapeType.penta;
+            case "esa":
+                type = ShapeType.esa;
                 break;
             case "circle":
                 type = ShapeType.circle;
@@ -262,6 +312,59 @@ public class EnviromentDataGenerator : MonoBehaviour
         return type;
     }
 
-#endregion
+    public ShapeType GetComplementaryShapeType(ShapeType shapeType)
+    {
+        ShapeType type = ShapeType.circle;
+
+        int rand = Random.Range(0,2);
+
+        switch (shapeType)
+        {
+            case ShapeType.tri:
+                if (rand == 0)
+                {
+                    type = ShapeType.quad;
+                }
+                else
+                {
+                    type = ShapeType.circle;
+                }
+                break;
+            case ShapeType.quad:
+                if (rand == 0)
+                {
+                    type = ShapeType.tri;
+                }
+                else
+                {
+                    type = ShapeType.esa;
+                }
+                break;
+            case ShapeType.esa:
+                if (rand == 0)
+                {
+                    type = ShapeType.quad;
+                }
+                else
+                {
+                    type = ShapeType.circle;
+                }
+                break;
+            case ShapeType.circle:
+                if (rand == 0)
+                {
+                    type = ShapeType.esa;
+                }
+                else
+                {
+                    type = ShapeType.tri;
+                }
+                break;
+        }
+
+        return type;
+    }
+
+    #endregion
 
 }

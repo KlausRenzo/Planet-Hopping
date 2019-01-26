@@ -171,10 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d67577b777534488bb90e45e9b1adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planetName: 
   planetInfos: {fileID: 0}
   bgClouds: {fileID: 1974056710975390}
   fgClouds: {fileID: 1620999500085952}
-  grass: {fileID: 0}
   terrain: {fileID: 212494616996215500}
   atmosphere: {fileID: 212244687017275476}
   bgCloudsSpeed: -1

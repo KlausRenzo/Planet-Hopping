@@ -6,7 +6,7 @@ public enum ShapeType
 {
     tri,
     quad,
-    penta,
+    esa,
     circle,
 }
 
@@ -20,5 +20,6 @@ public enum ColorType
 
 public enum ProbabilityType
 {
-
+    Color,
+    Shape,
 }

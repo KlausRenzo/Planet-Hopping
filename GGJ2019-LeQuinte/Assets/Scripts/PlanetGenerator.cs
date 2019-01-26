@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System;
 
 public class PlanetGenerator : MonoBehaviour 
 {
 
     #region Fields
 
-    public int planetsToGenerateEveryTime = 3;
+    public int planetsToGenerateEveryTime = 1;
     public Vector2 minMaxGeneratedPlanetSpeed = new Vector2(1f, 5f);
     public Vector2 minMaxGeneratedBgCloudsSpeed = new Vector2(1f, 5f);
     public Vector2 minMaxGeneratedFgCloudsSpeed = new Vector2(1f, 5f);
@@ -17,6 +18,10 @@ public class PlanetGenerator : MonoBehaviour
     public float secondaryShapeProbability = 30;
     public float mainColorProbability = 40;
     public float secondaryColorProbability = 30;
+
+    public GameObject planet;
+    public GameObject nextPlanets;
+    public List<GameObject> generatedPlanets = new List<GameObject>(); 
 
     EnviromentDataGenerator dataGenerator;
 
@@ -27,55 +32,110 @@ public class PlanetGenerator : MonoBehaviour
     private void Start()
     {
         dataGenerator = GetComponent<EnviromentDataGenerator>();
+        GeneratePlanets();
     }
 
     #endregion
 
     #region Methods
 
-    public List<Planet> GeneratePlanets()
+    public void GeneratePlanets()
     {
-        List<Planet> generatedPlanets = new List<Planet>();
-
-        for(int i = 0; i < planetsToGenerateEveryTime; i++)
+        for (int i = 0; i < planetsToGenerateEveryTime; i++)
         {
-            var newPlanet = new Planet
-            {
-                planetInfos = GeneratePlanetInfo(),
-                bgCloudsSpeed = Random.Range(minMaxGeneratedBgCloudsSpeed.x, minMaxGeneratedBgCloudsSpeed.y),
-                fgCloudsSpeed = Random.Range(minMaxGeneratedFgCloudsSpeed.x, minMaxGeneratedFgCloudsSpeed.y),
-                planetSpeed = Random.Range(minMaxGeneratedPlanetSpeed.x, minMaxGeneratedPlanetSpeed.y)
-            };
+            GameObject newPlanetObject = Instantiate(planet, nextPlanets.transform);
+            Planet newPlanet = newPlanetObject.GetComponent<Planet>();
+
+            newPlanet.planetInfos = GeneratePlanetInfo();
+            newPlanet.bgCloudsSpeed = UnityEngine.Random.Range(minMaxGeneratedBgCloudsSpeed.x, minMaxGeneratedBgCloudsSpeed.y);
+            newPlanet.fgCloudsSpeed = UnityEngine.Random.Range(minMaxGeneratedFgCloudsSpeed.x, minMaxGeneratedFgCloudsSpeed.y);
+            newPlanet.planetSpeed = UnityEngine.Random.Range(minMaxGeneratedPlanetSpeed.x, minMaxGeneratedPlanetSpeed.y);
             newPlanet.planetName = GenerateName(newPlanet.planetInfos.planetAppearanceType);
-            newPlanet.terrain.sprite = newPlanet.planetInfos.planetAppearanceType.enviromentSprite;
 
-            generatedPlanets.Add(newPlanet);
+            if (newPlanet.planetInfos.planetAppearanceType.enviromentSprite != null)
+            {
+                newPlanet.terrain.sprite = newPlanet.planetInfos.planetAppearanceType.enviromentSprite;
+            }
+
+            generatedPlanets.Add(newPlanetObject);
         }
-
-        return generatedPlanets;
     }
 
     private PlanetInfo GeneratePlanetInfo()
     {
-        bool usesMainColor = false;
-        bool usesMainShape = false;
+        PlanetInfo newPlanetInfo = ScriptableObject.CreateInstance<PlanetInfo>();
 
-        var newPlanetInfo = new PlanetInfo();
+        newPlanetInfo.planetAppearanceType = dataGenerator.generatedPlanetAppearances[UnityEngine.Random.Range(0, dataGenerator.generatedPlanetAppearances.Count)];
 
-        newPlanetInfo.planetAppearanceType = dataGenerator.generatedPlanetAppearances[Random.Range(0, dataGenerator.generatedPlanetAppearances.Count)];
-        if(Random.Range(0f,100f) < mainColorProbability)
+        ColorType mainColor = newPlanetInfo.planetAppearanceType.colorType;
+
+        if (IsMainProbabilityType(ProbabilityType.Color))
         {
-            usesMainColor = true;
-        }
-        if (usesMainColor)
-        {
-            newPlanetInfo.atmosphereType
+            newPlanetInfo.atmosphereType = dataGenerator.generatedAtmospheres[GetFilteredEnviromentListIndex(dataGenerator.generatedAtmospheres, mainColor)];
         }
         else
         {
-
+            newPlanetInfo.atmosphereType = dataGenerator.generatedAtmospheres[GetFilteredEnviromentListIndex(dataGenerator.generatedAtmospheres, dataGenerator.GetComplementaryColorType(mainColor))];
         }
 
+        mainColor = newPlanetInfo.planetAppearanceType.colorType;
+
+        if (IsMainProbabilityType(ProbabilityType.Color))
+        {
+            newPlanetInfo.seaType = dataGenerator.generatedSeas[GetFilteredEnviromentListIndex(dataGenerator.generatedSeas, mainColor)];
+        }
+        else
+        {
+            newPlanetInfo.seaType = dataGenerator.generatedSeas[GetFilteredEnviromentListIndex(dataGenerator.generatedSeas, dataGenerator.GetComplementaryColorType(mainColor))];
+        }
+
+        ShapeType mainShape = newPlanetInfo.planetAppearanceType.shapeType;
+
+        if (IsMainProbabilityType(ProbabilityType.Shape))
+        {
+            newPlanetInfo.rockType = dataGenerator.generatedRocks[GetFilteredEnviromentListIndex(dataGenerator.generatedRocks, mainShape)];
+        }
+        else
+        {
+            newPlanetInfo.rockType = dataGenerator.generatedRocks[GetFilteredEnviromentListIndex(dataGenerator.generatedRocks, dataGenerator.GetComplementaryShapeType(mainShape))];
+        }
+
+        mainShape = newPlanetInfo.planetAppearanceType.shapeType;
+
+        if (IsMainProbabilityType(ProbabilityType.Shape))
+        {
+            newPlanetInfo.faunaType = dataGenerator.generatedFauna[GetFilteredEnviromentListIndex(dataGenerator.generatedFauna, mainShape)];
+        }
+        else
+        {
+            newPlanetInfo.faunaType = dataGenerator.generatedFauna[GetFilteredEnviromentListIndex(dataGenerator.generatedFauna, dataGenerator.GetComplementaryShapeType(mainShape))];
+        }
+
+        mainColor = newPlanetInfo.planetAppearanceType.colorType;
+        mainShape = newPlanetInfo.planetAppearanceType.shapeType;
+
+        if (IsMainProbabilityType(ProbabilityType.Shape))
+        {
+            if (IsMainProbabilityType(ProbabilityType.Color))
+            {
+                newPlanetInfo.treeType = dataGenerator.generatedTrees[GetFilteredEnviromentListIndex(dataGenerator.generatedTrees, mainColor, mainShape)];
+            }
+            else
+            {
+                newPlanetInfo.treeType = dataGenerator.generatedTrees[GetFilteredEnviromentListIndex(dataGenerator.generatedTrees, dataGenerator.GetComplementaryColorType(mainColor), mainShape)];
+            }
+        }
+        else
+        {
+            if (IsMainProbabilityType(ProbabilityType.Color))
+            {
+                newPlanetInfo.treeType = dataGenerator.generatedTrees[GetFilteredEnviromentListIndex(dataGenerator.generatedTrees, mainColor, dataGenerator.GetComplementaryShapeType(mainShape))];
+            }
+            else
+            {
+                newPlanetInfo.treeType = dataGenerator.generatedTrees[GetFilteredEnviromentListIndex(dataGenerator.generatedTrees, dataGenerator.GetComplementaryColorType(mainColor), dataGenerator.GetComplementaryShapeType(mainShape))];
+            }
+        }
 
         return newPlanetInfo;
     }
@@ -94,9 +154,69 @@ public class PlanetGenerator : MonoBehaviour
         mainShapeProbability = 100 - (secondaryShapeProbability * 2);
     }
 
-    private CheckProbability(string probabilityType)
+    private int GetFilteredEnviromentListIndex(List<Atmosphere> list, ColorType colorType)
     {
+        int index = 0;
 
+
+
+        return index;
+    }
+
+    private int GetFilteredEnviromentListIndex(List<Sea> list, ColorType colorType)
+    {
+        int index = 0;
+
+
+
+        return index;
+    }
+
+    private int GetFilteredEnviromentListIndex(List<Rock> list, ShapeType shapeType)
+    {
+        int index = 0;
+
+
+
+        return index;
+    }
+
+    private int GetFilteredEnviromentListIndex(List<Fauna> list, ShapeType shapeType)
+    {
+        int index = 0;
+
+
+
+        return index;
+    }
+
+    private int GetFilteredEnviromentListIndex(List<Tree> list, ColorType colorType, ShapeType shapeType)
+    {
+        int index = 0;
+
+
+
+        return index;
+    }
+
+    private bool IsMainProbabilityType(ProbabilityType type)
+    {
+        bool usesMain = false;
+        if (type == ProbabilityType.Color)
+        {
+            if (UnityEngine.Random.Range(0f, 100f) < mainColorProbability)
+            {
+                usesMain = true;
+            }
+        }
+        else if (type == ProbabilityType.Shape)
+        {
+            if (UnityEngine.Random.Range(0f, 100f) < mainShapeProbability)
+            {
+                usesMain = true;
+            }
+        }
+        return usesMain;
     }
 
     #endregion
