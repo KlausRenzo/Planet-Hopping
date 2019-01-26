@@ -9,9 +9,7 @@ public class PlanetPreviewsManager : MonoBehaviour
 
     public GameObject planetPreview;
 
-    public GameObject anchorR;
-    public GameObject anchorT;
-    public GameObject anchorL;
+    public List<GameObject> anchors;
 
     #endregion
 
@@ -19,7 +17,10 @@ public class PlanetPreviewsManager : MonoBehaviour
 
     public void SpawnPreviews()
     {
+        for(int i = 0; i < 3; i++)
+        {
 
+        }
     }
 
     #endregion
