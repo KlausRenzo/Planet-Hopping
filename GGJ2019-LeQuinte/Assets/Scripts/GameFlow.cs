@@ -18,6 +18,7 @@ public class GameFlow : MonoBehaviour
     public KeyCode moveToTopPlanet;
     public KeyCode moveToRightPlanet;
 
+    private PlayerMovement playerMovement;
     private PlanetGenerator planetGenerator;
 
     #endregion
@@ -27,6 +28,8 @@ public class GameFlow : MonoBehaviour
     private void Start()
     {
         planetGenerator = FindObjectOfType<PlanetGenerator>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        playerMovement.RefreshMovementInfo();
     }
 
     private void Update()
@@ -52,6 +55,7 @@ public class GameFlow : MonoBehaviour
     private void LeavePlanet(JumpDirections jumpDirection)
     {
         //jump -> stop play
+        playerMovement.canMove = false;
 
         //animation
 
@@ -64,6 +68,10 @@ public class GameFlow : MonoBehaviour
         LoadNextPreviews();
 
         //animation land
+        playerMovement.currentPlanet = currentPlanet.GetComponent<Planet>();
+        playerMovement.RefreshMovementInfo();
+        playerMovement.canMove = true;
+
     }
 
     private void LoadNextPreviews()

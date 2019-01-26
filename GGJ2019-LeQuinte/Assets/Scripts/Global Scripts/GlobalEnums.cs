@@ -29,3 +29,9 @@ public enum JumpDirections
     Top,
     Right,
 }
+
+public enum Directions
+{
+    Left,
+    Right,
+}

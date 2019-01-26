@@ -19,6 +19,11 @@ public class Planet : MonoBehaviour
     public float fgCloudsSpeed;
     public float planetSpeed;
 
+    public List<GameObject> movementTri = new List<GameObject>();
+    public List<GameObject> movementQuad = new List<GameObject>();
+    public List<GameObject> movementCircle = new List<GameObject>();
+    public List<GameObject> movementEsa = new List<GameObject>();
+
     #endregion
 
     private void Start()
