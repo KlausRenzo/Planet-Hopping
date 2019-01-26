@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e84a9a3e34570f419bef4b028b4cb19, type: 3}
-  m_Name: red_seas
+  m_Name: red_Seas
   m_EditorClassIdentifier: 
   enviromentSprite: {fileID: 21300000, guid: 49b3e3c83ba8d1449a00af289cb9b5b4, type: 3}
   colorType: 1

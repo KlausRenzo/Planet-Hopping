@@ -8,6 +8,7 @@ public class CircleController : MonoBehaviour
     [Range(0, 10)]
     public float Radius;
 
+    public Vector3 center;
     public PlayerContoller Player;
     public Vector3 StartingPosition;
 
@@ -15,16 +16,16 @@ public class CircleController : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(Vector3.zero, Radius);
+        Gizmos.DrawWireSphere(center, Radius);
     }
 
     void Start()
     {
-        Player.transform.position = Vector3.up * Radius;
+        Player.transform.position = (center + Vector3.up) * Radius;
     }
     void Update()
     {
         angle = Input.GetAxis("Horizontal") * Time.deltaTime * Player.CircleSpeedModifier;
-        Player.transform.RotateAround(Vector3.zero, Vector3.back, angle);
+        Player.transform.RotateAround(center, Vector3.back, angle);
     }
 }

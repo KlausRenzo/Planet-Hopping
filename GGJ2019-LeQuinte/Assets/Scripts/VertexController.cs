@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class VertexController : MonoBehaviour
@@ -13,7 +15,11 @@ public class VertexController : MonoBehaviour
     public PlayerContoller Player;
     public Vector3 CurrentVertexPosition => Vertexes[vertexIndex].transform.position;
     public Vector3 NextVertexPosition => Vertexes[vertexIndex.Next()].transform.position;
+
+
+    private float JumpTimeStart;
     
+
     private void Awake()
     {
         if (Instance == null)
@@ -32,7 +38,7 @@ public class VertexController : MonoBehaviour
     {
         if (Application.isEditor)
         {
-            return;
+            //return;
         }
 
         for (int i = 0; i < Vertexes.Count; i++)
@@ -72,7 +78,7 @@ public class VertexController : MonoBehaviour
     private Vector3 CalculateNormalVector()
     {
         Vector3 side = CalculateSideVector();
-        return new Vector3(side.y, -side.x,0);
+        return new Vector3(side.y, -side.x, 0);
     }
 
     public float VertexDistance()
@@ -89,6 +95,30 @@ public class VertexController : MonoBehaviour
         Player.transform.position = Vector3.Lerp(CurrentVertexPosition, NextVertexPosition, Player.speed % 1);
 
         Player.transform.up = Vector3.Lerp(Player.transform.up, -NormalVector.normalized, Player.RotationSpeed);
-    }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            JumpTimeStart = Time.time;
+            // STATUS PREPARING
+            Player.GetComponent<Animator>().Play("Preparing");
+            Player.CanJump = true;
+        }
 
+        if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.S))
+        {
+            Player.GetComponent<Animator>().Play("Idle");
+            Player.CanJump = false;
+        }
+
+        if (Player.CanJump && Input.GetKeyUp(KeyCode.W))
+        {
+            if (Time.time - JumpTimeStart > Player.TimeToMakeBigJump)
+            {
+                Player.GetComponent<Animator>().Play("PlanetHop");
+            }
+            else
+            {
+                Player.GetComponent<Animator>().Play("Jump");
+            }
+        }
+    }
 }
