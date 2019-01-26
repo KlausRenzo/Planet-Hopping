@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class GameFlow : MonoBehaviour 
 {
@@ -26,6 +27,8 @@ public class GameFlow : MonoBehaviour
     private void Start()
     {
         planetGenerator = FindObjectOfType<PlanetGenerator>();
+        playerVertexController = FindObjectOfType<VertexController>();
+        SetNewMovementVertexes();
     }
 
     private void Update()
@@ -63,8 +66,6 @@ public class GameFlow : MonoBehaviour
         LoadNextPreviews();
 
         //animation land
-
-        //play
     }
 
     private void LoadNextPreviews()
