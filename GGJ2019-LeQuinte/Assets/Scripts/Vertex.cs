@@ -10,4 +10,10 @@ public class Vertex : MonoBehaviour
         GameManager.Instance.Vertexes.Add(this);
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(this.transform.position, 0.5f);
+    }
+
 }
