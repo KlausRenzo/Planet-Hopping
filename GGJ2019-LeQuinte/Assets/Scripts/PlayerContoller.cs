@@ -16,6 +16,9 @@ public class PlayerContoller : MonoBehaviour
 
     [Range(0, 50)] public float CircleSpeedModifier;
 
+    public bool CanJump = true;
+    [Range(0, 3)] public float TimeToMakeBigJump;
+
 
 
     //void Update()

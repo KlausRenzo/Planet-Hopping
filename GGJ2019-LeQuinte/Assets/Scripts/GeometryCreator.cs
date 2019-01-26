@@ -42,10 +42,12 @@ public class GeometryCreator : MonoBehaviour
             //TODO: Better initialization of VertexController, with player find
             v.Player = GameObject.Find("player").GetComponent<PlayerContoller>();
             Debug.Log("Geometria");
+            GameObject parent = new GameObject();
+            parent.transform.position = sprite.transform.position;
             foreach (Vector3 point in Points)
             {
                 GameObject g = new GameObject();
-                g.transform.SetParent(sprite.transform);
+                g.transform.SetParent(parent.transform);
                 g.transform.position = point + sprite.transform.position;
                 g.AddComponent<Vertex>();
             }
