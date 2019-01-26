@@ -16,7 +16,7 @@ MonoBehaviour:
   rockType: {fileID: 11400000, guid: 209d1151efe54cc499c1238462b4bd2b, type: 2}
   faunaType: {fileID: 11400000, guid: 4eb5539d663cdf94a84b130b819cc427, type: 2}
   atmosphereType: {fileID: 11400000, guid: 5418f4eff3949d44d92b8278de38888d, type: 2}
-  planetAppearanceType: {fileID: 11400000, guid: 5bf0066c45579d24eb638526875f4ae7,
+  planetAppearanceType: {fileID: 11400000, guid: c27a23dd76eff644b937c27e2b34fa7d,
     type: 2}
   bgCloudSpeed: 1
   fgCloudSpeed: 1
