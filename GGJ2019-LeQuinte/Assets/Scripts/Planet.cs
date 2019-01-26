@@ -20,6 +20,11 @@ public class Planet : MonoBehaviour
 
     #endregion
 
+    private void Start()
+    {
+        GeneratePlanet();
+    }
+
     private void Update()
     {
         PlanetTick();
@@ -34,7 +39,7 @@ public class Planet : MonoBehaviour
 
     public void GeneratePlanet()
     {
-
+        
     }
 
     #endregion

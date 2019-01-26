@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc0ebc74048780b44a9ccb6cf29afa20, type: 3}
   m_Name: green_circle_planetappearances
   m_EditorClassIdentifier: 
-  enviromentSprite: {fileID: 0}
+  enviromentSprite: {fileID: 21300000, guid: a23707f536785a14d8dec01a436bae58, type: 3}
   shapeType: 3
   colorType: 2

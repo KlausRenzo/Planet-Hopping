@@ -56,6 +56,10 @@ public class PlanetGenerator : MonoBehaviour
             {
                 newPlanet.terrain.sprite = newPlanet.planetInfos.planetAppearanceType.enviromentSprite;
             }
+            if (newPlanet.planetInfos.atmosphereType.enviromentSprite != null)
+            {
+                newPlanet.atmosphere.sprite = newPlanet.planetInfos.atmosphereType.enviromentSprite;
+            }
 
             generatedPlanets.Add(newPlanetObject);
         }

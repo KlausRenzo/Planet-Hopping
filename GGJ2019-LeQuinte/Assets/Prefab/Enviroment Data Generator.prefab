@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663590bc7e3ec1443bb1f79b77a1728a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetsToGenerateEveryTime: 5
+  planetsToGenerateEveryTime: 10
   minMaxGeneratedPlanetSpeed: {x: 1, y: 5}
   minMaxGeneratedBgCloudsSpeed: {x: 1, y: 5}
   minMaxGeneratedFgCloudsSpeed: {x: 1, y: 5}
