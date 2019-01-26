@@ -1,0 +1,72 @@
+PIANETI
+tondo nero V
+tondo rosso V
+tondo verde V
+tondo bianco V
+tondo blu V
+pentagono nero V
+pentagono rosso V
+pentagono verde V
+pentagono bianco V
+pentaogno blu V
+quad nero
+quad rosso
+quad verde
+quad bianco
+quad blu
+tri nero
+tri rosso
+tri verde
+tri bianco
+tri blu
+
+ALBERI
+tondo nero
+tondo rosso
+tondo verde
+tondo bianco
+tondo blu
+pentagono nero
+pentagono rosso
+pentagono verde
+pentagono bianco
+pentaogno blu
+quad nero
+quad rosso
+quad verde
+quad bianco
+quad blu
+tri nero V
+tri rosso V
+tri verde V
+tri bianco V
+tri blu V
+
+MARE
+nero
+rosso
+verde
+bianco
+blu
+
+ROCCIA
+tondo
+penta
+quad V
+tri V
+
+ATMO
+rosso V
+verde V
+bianco V
+blu V
+
+FAUNA
+tondo
+penta
+quad
+tri
+
+//NOTA SU ABBINAMENTI
+alberi, mari, rocce e atmo sono da abbinare al loro rispettivo oppure ai due adiacenti nella lista
+(ad es. il rosso può essere con altri rossi, neri o verdi, il triangolo con triangoli tondi e quadrati)

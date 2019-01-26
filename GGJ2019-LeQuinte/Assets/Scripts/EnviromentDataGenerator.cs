@@ -14,6 +14,13 @@ public class EnviromentDataGenerator : MonoBehaviour
     public List<string> shapedEnviromentTypes;
     public List<string> coloredAndShapedEnviromentTypes;
 
+    public List<Sea> generatedSeas = new List<Sea>();
+    public List<Rock> generatedRocks = new List<Rock>();
+    public List<Tree> generatedTrees = new List<Tree>();
+    public List<Fauna> generatedFauna = new List<Fauna>();
+    public List<Atmosphere> generatedAtmospheres = new List<Atmosphere>();
+    public List<PlanetAppearance> generatedPlanetAppearances = new List<PlanetAppearance>();
+
     private const string spritePath = "Assets/Sprites/Enviroment Sprites";
     private const string endingPath = "Assets/Scripts/ScriptableObject/Enviroment Elements";
     private string[] shapeTypes = System.Enum.GetNames(typeof(ShapeType));
@@ -36,7 +43,7 @@ public class EnviromentDataGenerator : MonoBehaviour
         {
             string currentEndingPath = endingPath + "/" + envType + "/";
 
-            if (envType == "Atmospheres")
+            if (envType == "atmospheres")
             {
                 foreach (string color in colorTypes)
                 {
@@ -48,10 +55,11 @@ public class EnviromentDataGenerator : MonoBehaviour
                     newAtmosphere.name = color + "_" + envType;
                     newAtmosphere.colorType = GetColorType(color);
                     AssetDatabase.CreateAsset(newAtmosphere, currentEndingPath + newAtmosphere.name + ".asset");
+                    generatedAtmospheres.Add(newAtmosphere);
                     EditorUtility.SetDirty(newAtmosphere);
                 }
             }
-            else if (envType == "Seas")
+            else if (envType == "seas")
             {
                 foreach (string color in colorTypes)
                 {
@@ -63,6 +71,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     newSea.name = color + "_" + envType;
                     newSea.colorType = GetColorType(color);
                     AssetDatabase.CreateAsset(newSea, currentEndingPath + newSea.name + ".asset");
+                    generatedSeas.Add(newSea);
                     EditorUtility.SetDirty(newSea);
                 }
             }
@@ -75,7 +84,7 @@ public class EnviromentDataGenerator : MonoBehaviour
         {
             string currentEndingPath = endingPath + "/" + envType + "/";
 
-            if (envType == "Rocks")
+            if (envType == "rocks")
             {
                 foreach (string shape in shapeTypes)
                 {
@@ -87,10 +96,11 @@ public class EnviromentDataGenerator : MonoBehaviour
                     newRock.name = shape + "_" + envType;
                     newRock.shapeType = GetShapeType(shape);
                     AssetDatabase.CreateAsset(newRock, currentEndingPath + newRock.name + ".asset");
+                    generatedRocks.Add(newRock);
                     EditorUtility.SetDirty(newRock);
                 }
             }
-            else if (envType == "Fauna")
+            else if (envType == "fauna")
             {
                 foreach (string shape in shapeTypes)
                 {
@@ -102,6 +112,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                     newFauna.name = shape + "_" + envType;
                     newFauna.shapeType = GetShapeType(shape);
                     AssetDatabase.CreateAsset(newFauna, currentEndingPath + newFauna.name + ".asset");
+                    generatedFauna.Add(newFauna);
                     EditorUtility.SetDirty(newFauna);
                 }
             }
@@ -114,7 +125,7 @@ public class EnviromentDataGenerator : MonoBehaviour
         {
             string currentEndingPath = endingPath + "/" + envType + "/";
 
-            if (envType == "PlanetAppearances")
+            if (envType == "planetappearances")
             {
                 foreach (string color in colorTypes)
                 {
@@ -129,11 +140,12 @@ public class EnviromentDataGenerator : MonoBehaviour
                         newPlanetAppearance.shapeType = GetShapeType(shape);
                         newPlanetAppearance.colorType = GetColorType(color);
                         AssetDatabase.CreateAsset(newPlanetAppearance, currentEndingPath + newPlanetAppearance.name + ".asset");
+                        generatedPlanetAppearances.Add(newPlanetAppearance);
                         EditorUtility.SetDirty(newPlanetAppearance);
                     }
                 }
             }
-            else if (envType == "Trees")
+            else if (envType == "trees")
             {
                 foreach (string color in colorTypes)
                 {
@@ -148,6 +160,7 @@ public class EnviromentDataGenerator : MonoBehaviour
                         newTree.shapeType = GetShapeType(shape);
                         newTree.colorType = GetColorType(color);
                         AssetDatabase.CreateAsset(newTree, currentEndingPath + newTree.name + ".asset");
+                        generatedTrees.Add(newTree);
                         EditorUtility.SetDirty(newTree);
                     }
                 }
@@ -163,6 +176,13 @@ public class EnviromentDataGenerator : MonoBehaviour
 
     private void DeleteData()
     {
+        generatedAtmospheres.Clear();
+        generatedSeas.Clear();
+        generatedRocks.Clear();
+        generatedFauna.Clear();
+        generatedPlanetAppearances.Clear();
+        generatedTrees.Clear();
+
         foreach (string envType in coloredEnviromentTypes)
         {
             var files = Directory.GetFiles(endingPath + "/" + envType);
@@ -195,12 +215,12 @@ public class EnviromentDataGenerator : MonoBehaviour
 
     private ColorType GetColorType(string color)
     {
-        ColorType type = ColorType.black;
+        ColorType type = ColorType.purple;
 
         switch(color)
         {
             case "black":
-                type = ColorType.black;
+                type = ColorType.purple;
                 break;
             case "red":
                 type = ColorType.red;
@@ -208,11 +228,61 @@ public class EnviromentDataGenerator : MonoBehaviour
             case "green":
                 type = ColorType.green;
                 break;
-            case "white":
-                type = ColorType.white;
-                break;
             case "blue":
                 type = ColorType.blue;
+                break;
+        }
+
+        return type;
+    }
+
+    public ColorType GetComplementaryColorType(ColorType colorType)
+    {
+        ColorType type = ColorType.purple;
+
+        int rand = Random.Range(0, 2);
+
+        switch (colorType)
+        {
+            case ColorType.purple:
+                if (rand == 0)
+                {
+                    type = ColorType.blue;
+                }
+                else
+                {
+                    type = ColorType.red;
+                }
+                break;
+            case ColorType.red:
+                if (rand == 0)
+                {
+                    type = ColorType.purple;
+                }
+                else
+                {
+                    type = ColorType.green;
+                }
+                break;
+            case ColorType.green:
+                if (rand == 0)
+                {
+                    type = ColorType.red;
+                }
+                else
+                {
+                    type = ColorType.blue;
+                }
+                break;
+            case ColorType.blue:
+                if (rand == 0)
+                {
+                    type = ColorType.green;
+                }
+                else
+                {
+                    type = ColorType.purple;
+                }
                 break;
         }
 
@@ -231,8 +301,8 @@ public class EnviromentDataGenerator : MonoBehaviour
             case "quad":
                 type = ShapeType.quad;
                 break;
-            case "penta":
-                type = ShapeType.penta;
+            case "esa":
+                type = ShapeType.esa;
                 break;
             case "circle":
                 type = ShapeType.circle;
@@ -242,6 +312,59 @@ public class EnviromentDataGenerator : MonoBehaviour
         return type;
     }
 
-#endregion
+    public ShapeType GetComplementaryShapeType(ShapeType shapeType)
+    {
+        ShapeType type = ShapeType.circle;
+
+        int rand = Random.Range(0,2);
+
+        switch (shapeType)
+        {
+            case ShapeType.tri:
+                if (rand == 0)
+                {
+                    type = ShapeType.quad;
+                }
+                else
+                {
+                    type = ShapeType.circle;
+                }
+                break;
+            case ShapeType.quad:
+                if (rand == 0)
+                {
+                    type = ShapeType.tri;
+                }
+                else
+                {
+                    type = ShapeType.esa;
+                }
+                break;
+            case ShapeType.esa:
+                if (rand == 0)
+                {
+                    type = ShapeType.quad;
+                }
+                else
+                {
+                    type = ShapeType.circle;
+                }
+                break;
+            case ShapeType.circle:
+                if (rand == 0)
+                {
+                    type = ShapeType.esa;
+                }
+                else
+                {
+                    type = ShapeType.tri;
+                }
+                break;
+        }
+
+        return type;
+    }
+
+    #endregion
 
 }

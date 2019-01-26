@@ -6,15 +6,20 @@ public enum ShapeType
 {
     tri,
     quad,
-    penta,
+    esa,
     circle,
 }
 
 public enum ColorType
 {
-    black,
+    purple,
     red,
     green,
-    white,
     blue,
+}
+
+public enum ProbabilityType
+{
+    Color,
+    Shape,
 }

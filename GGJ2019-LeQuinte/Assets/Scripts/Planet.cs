@@ -8,11 +8,11 @@ public class Planet : MonoBehaviour
 
     #region Fields
 
+    public string planetName;
     public PlanetInfo planetInfos;
     public GameObject bgClouds;
     public GameObject fgClouds;
     public SpriteRenderer terrain;
-    public SpriteRenderer grass;
     public SpriteRenderer atmosphere;
 
     public float bgCloudsSpeed;
