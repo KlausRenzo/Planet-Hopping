@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode moveLeft;
     public KeyCode moveRight;
     public KeyCode jump;
+    public KeyCode pickUp;
 
     public float timeForPlanetHop = 2;
     public float playerSpeed;
@@ -26,7 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private ShapeType currentShapeType;
     private int horizontalMovement;
     private Animator anim;
-    private float startJumpTime;
+    private bool isCharging = false;
+    public bool isJumping = false;
 
     #endregion
 
@@ -113,36 +115,60 @@ public class PlayerMovement : MonoBehaviour
             horizontalMovement++;
         }
 
-        if (Input.GetKeyDown(jump))
+        if (Input.GetKeyDown(jump) && !isJumping)
         {
-            startJumpTime = Time.time;
+            anim.SetInteger("Status", 1);
         }
-        if (Input.GetKeyUp(jump))
+        if (Input.GetKeyUp(jump) && !isJumping)
         {
-            if(Time.time - startJumpTime <= 0)
+            isJumping = true;
+
+            if (isCharging)
             {
-                //planetHop
+                ReleaseCharge();
+                anim.SetInteger("Status", 3);
             }
             else
             {
                 anim.SetInteger("Status", 2);
             }
         }
+
+        if(Input.GetKeyDown(pickUp))
+        {
+            if(isCharging)
+            {
+                ReleaseCharge();
+                anim.SetInteger("Status", 0);
+            }
+            else
+            {
+                //pickUp
+            }
+        }
+    }
+
+    public void SetStatus(int integer)
+    {
+        anim.SetInteger("Status", integer);
     }
 
     public void SetLanded()
     {
-        anim.SetBool("isJumping", false);
+        isJumping = false;
+        anim.SetInteger("Status", 0);
     }
 
     public void EndlessCharge()
     {
+        isCharging = true;
         anim.speed = 0;
     }
 
     private void ReleaseCharge()
     {
         anim.speed = 1;
+        isCharging = false;
     }
 
     public void RefreshMovementInfo()

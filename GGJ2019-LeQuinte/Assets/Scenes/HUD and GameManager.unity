@@ -274,33 +274,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114427869944887922, guid: f3db5c0a6fc22504596b74a5f6d9417d,
+        type: 2}
+      propertyPath: currentPlanet
+      value: 
+      objectReference: {fileID: 1113256868}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &392163657 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1722042379401576, guid: f3db5c0a6fc22504596b74a5f6d9417d,
-    type: 2}
-  m_PrefabInternal: {fileID: 392163656}
---- !u!114 &392163658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 392163657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edf65351163861c4289095d97782b1e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveLeft: 97
-  moveRight: 100
-  jump: 119
-  playerSpeed: 0.01
-  currentPlanet: {fileID: 1113256868}
-  canMove: 1
-  currentDirection: 0
-  currentMovementIndex: 0
 --- !u!1 &445468562
 GameObject:
   m_ObjectHideFlags: 0
