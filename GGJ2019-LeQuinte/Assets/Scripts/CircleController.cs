@@ -21,7 +21,7 @@ public class CircleController : MonoBehaviour
 
     void Start()
     {
-        Player.transform.position = (center + Vector3.up) * Radius;
+        Player.transform.position = center + Vector3.up * Radius;
     }
     void Update()
     {
