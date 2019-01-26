@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Planet : MonoBehaviour 
+[CreateAssetMenu(fileName = "_planet", menuName = "Planet")]
+public class Planet : ScriptableObject 
 {
 
-	#region Fields
+    #region Fields
+
+    public Rock rockType;
 
 	#endregion
 

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Security.Policy;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -24,9 +23,9 @@ public class GameManager : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        for (int i = 0; i < Vertexes.Count; i++)
+        for (int i = 0; i < Vertexes.Count - 2; i++)
         {
-            Gizmos.DrawLine(Vertexes[i].transform.position, Vertexes[i + 1]?.transform.position);
+            Gizmos.DrawLine(Vertexes[i].transform.position, Vertexes[i + 1].transform.position);
         }
     }
 }
