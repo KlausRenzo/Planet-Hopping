@@ -27,8 +27,6 @@ public class GameFlow : MonoBehaviour
     private void Start()
     {
         planetGenerator = FindObjectOfType<PlanetGenerator>();
-        playerVertexController = FindObjectOfType<VertexController>();
-        SetNewMovementVertexes();
     }
 
     private void Update()
