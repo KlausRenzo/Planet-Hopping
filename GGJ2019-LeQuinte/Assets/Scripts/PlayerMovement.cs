@@ -250,6 +250,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             PickUpElement(pickableHotSpots[0].enviromentElement);
+            pickableHotSpots[0].PickedUp();
         }
     }
 

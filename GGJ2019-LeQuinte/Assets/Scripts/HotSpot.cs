@@ -37,7 +37,7 @@ public class HotSpot : MonoBehaviour
 
     public void PickedUp()
     {
-
+        pickupParticle.GetComponent<ParticleSystem>().Play();
     }
 
     #endregion
