@@ -291,6 +291,21 @@ Prefab:
       propertyPath: gameFlow
       value: 
       objectReference: {fileID: 948600078}
+    - target: {fileID: 114427869944887922, guid: f3db5c0a6fc22504596b74a5f6d9417d,
+        type: 2}
+      propertyPath: PlayerSpeedLimiters.y
+      value: 4.20765
+      objectReference: {fileID: 0}
+    - target: {fileID: 114427869944887922, guid: f3db5c0a6fc22504596b74a5f6d9417d,
+        type: 2}
+      propertyPath: PlayerSpeedMultiplier
+      value: 2.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 114427869944887922, guid: f3db5c0a6fc22504596b74a5f6d9417d,
+        type: 2}
+      propertyPath: PlayerSpeedLimiters.x
+      value: 1.0928962
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
   m_IsPrefabAsset: 0
@@ -1162,7 +1177,7 @@ Transform:
   - {fileID: 1261788117}
   - {fileID: 1255572811}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1255572810
 GameObject:
