@@ -156,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
             HotSpot currentHotSpot = collision.gameObject.GetComponent<HotSpot>();
 
             pickableHotSpots.Add(currentHotSpot);
+            currentHotSpot.InteractableParticleOn();
         }
 
         ClearListFromNone(pickableHotSpots);
@@ -168,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
             HotSpot currentHotSpot = collision.gameObject.GetComponent<HotSpot>();
 
             pickableHotSpots.Remove(currentHotSpot);
+            currentHotSpot.InteractableParticleOff();
         }
 
         ClearListFromNone(pickableHotSpots);
