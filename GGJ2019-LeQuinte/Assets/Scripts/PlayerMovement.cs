@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
         Tree,
         Rock,
         Sea,
+        Fauna,
     }
 
     #region Fields
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip pickupTree;
     public AudioClip pickupRock;
     public AudioClip pickupSea;
+    public AudioClip pickupFauna;
 
     public bool isJumping = false;
     public List<HotSpot> pickableHotSpots;
@@ -489,6 +491,9 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case SoundKeys.Atmos:
                 audioSource.PlayOneShot(pickupAtmosphere);
+                break;
+            case SoundKeys.Fauna:
+                audioSource.PlayOneShot(pickupFauna);
                 break;
         }
     }

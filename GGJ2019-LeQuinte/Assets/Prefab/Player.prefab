@@ -282,6 +282,7 @@ MonoBehaviour:
   pickupTree: {fileID: 8300000, guid: 7af7b1e3d8e32ad4881df03d82a57b35, type: 3}
   pickupRock: {fileID: 8300000, guid: 4415cf819a23e7d49a7d443d3cc09164, type: 3}
   pickupSea: {fileID: 8300000, guid: 1e4bd32b1715e0247bcb7c261425c1d4, type: 3}
+  pickupFauna: {fileID: 8300000, guid: 6565e7211b7496e45a0491adf55b4257, type: 3}
   isJumping: 0
   pickableHotSpots: []
   currentDirection: 0

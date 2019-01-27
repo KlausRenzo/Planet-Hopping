@@ -157,6 +157,7 @@ public class GameFlow : MonoBehaviour
         playerMovement.canMove = false;
         playerMovement.GetComponent<Animator>().SetInteger("Status", 100);
         inventory.startingPlanetInfos = currentPlanet.GetComponent<Planet>().planetInfos;
+        inventory.LinkGhosts();
     }
 
     public void Win()

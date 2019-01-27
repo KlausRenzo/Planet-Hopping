@@ -21,7 +21,15 @@ public class Inventory : MonoBehaviour
     public Image faunaImage;
     public Image atmosphereImage;
 
+    public Image ghostTreeImage;
+    public Image ghostRockImage;
+    public Image ghostSeaImage;
+    public Image ghostFaunaImage;
+    public Image ghostAtmosphereImage;
+
     public PlanetInfo startingPlanetInfos;
+
+    [HideInInspector]
     public GameFlow gameFlow;
 
     #endregion
@@ -71,7 +79,9 @@ public class Inventory : MonoBehaviour
 
     private void CheckWin()
     {
-        if(currentTree == startingPlanetInfos.treeType &&
+        currentPlanetAppearance = gameFlow.currentPlanet.GetComponent<Planet>().planetInfos.planetAppearanceType;
+
+        if (currentTree == startingPlanetInfos.treeType &&
             currentFauna == startingPlanetInfos.faunaType &&
             currentRock == startingPlanetInfos.rockType &&
             currentSea == startingPlanetInfos.seaType &&
@@ -80,6 +90,17 @@ public class Inventory : MonoBehaviour
         {
             gameFlow.Win();
         }
+    }
+
+    public void LinkGhosts()
+    {
+        PlanetInfo planetInfos = gameFlow.currentPlanet.GetComponent<Planet>().planetInfos;
+
+        ghostAtmosphereImage.sprite = planetInfos.atmosphereType.enviromentSprite;
+        ghostFaunaImage.sprite = planetInfos.faunaType.enviromentSprite;
+        ghostRockImage.sprite = planetInfos.rockType.enviromentSprite;
+        ghostSeaImage.sprite = planetInfos.seaType.enviromentSprite;
+        ghostTreeImage.sprite = planetInfos.treeType.enviromentSprite;
     }
 
     #endregion
