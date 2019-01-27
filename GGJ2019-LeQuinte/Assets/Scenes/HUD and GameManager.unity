@@ -403,6 +403,16 @@ Prefab:
       propertyPath: TopPlanetBounds.Array.data[0]
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 114427869944887922, guid: f3db5c0a6fc22504596b74a5f6d9417d,
+        type: 2}
+      propertyPath: playerSpeedLimiter.y
+      value: 4.20765
+      objectReference: {fileID: 0}
+    - target: {fileID: 114427869944887922, guid: f3db5c0a6fc22504596b74a5f6d9417d,
+        type: 2}
+      propertyPath: playerSpeedLimiter.x
+      value: 1.2568306
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
   m_IsPrefabAsset: 0

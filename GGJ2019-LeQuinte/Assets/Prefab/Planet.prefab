@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4871788161476064}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4353972273323008}
   m_Layer: 0
-  m_Name: GameObject (10)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4434726769829046}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4381752190694776}
   m_Layer: 0
-  m_Name: GameObject (6)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4403953663809162}
   m_Layer: 0
-  m_Name: GameObject (16)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4484261988892614}
   m_Layer: 0
-  m_Name: GameObject (14)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4789538476710914}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,7 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4182284806797518}
   m_Layer: 0
-  m_Name: GameObject (12)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -578,7 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4044041409940700}
   m_Layer: 0
-  m_Name: First
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,7 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4751543142605210}
   m_Layer: 0
-  m_Name: GameObject (7)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -668,7 +668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4695738729956404}
   m_Layer: 0
-  m_Name: GameObject (8)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -683,7 +683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4009106027437248}
   m_Layer: 0
-  m_Name: GameObject (5)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,7 +744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4018482899265080}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Angle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
