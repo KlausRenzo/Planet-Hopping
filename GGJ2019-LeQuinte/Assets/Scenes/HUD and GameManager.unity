@@ -670,6 +670,58 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1078262990167724, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605817689774720, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019308993520186, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354213990472502, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150584106543702, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102553745709734, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661752646423844, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185432450782940, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440174027725550, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042119613605038, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005790650127528, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610710682573528, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511222689283442, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
+      propertyPath: m_Name
+      value: Angle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
   m_IsPrefabAsset: 0
