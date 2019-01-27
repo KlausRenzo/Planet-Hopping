@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public enum SoundKeys
     {
         Walk,
@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jump;
     public KeyCode pickUp;
 
+    public GameFlow gameFlow;
+
     public float timeForPlanetHop = 2;
     public float playerSpeed;
 
@@ -42,11 +44,11 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip pickupRock;
     public AudioClip pickupSea;
 
-    [HideInInspector]
-    public Directions currentDirection;
+    [HideInInspector] public Directions currentDirection;
 
     public List<HotSpot> pickableHotSpots;
 
+    private JumpDirections? direction;
     private float currentLerpIndex;
     private int currentMovementIndex;
     private float currentLerp;
@@ -134,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("HotSpot"))
+        if (collision.CompareTag("HotSpot"))
         {
             HotSpot currentHotSpot = collision.gameObject.GetComponent<HotSpot>();
 
@@ -178,6 +180,7 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetInteger("Status", 1);
         }
+
         if (Input.GetKeyUp(jump) && !isJumping)
         {
             isJumping = true;
@@ -185,7 +188,15 @@ public class PlayerMovement : MonoBehaviour
             if (isCharging)
             {
                 ReleaseCharge();
-                anim.SetInteger("Status", 3);
+                if (GetPlanetJumpDirection() != null)
+                {
+                    anim.SetInteger("Status", 3);
+                    canMove = false;
+                }
+                else
+                {
+                    anim.SetInteger("Status", 0);
+                }
             }
             else
             {
@@ -193,9 +204,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(pickUp))
+        if (Input.GetKeyDown(pickUp))
         {
-            if(isCharging || anim.GetInteger("Status") == 1)
+            if (isCharging || anim.GetInteger("Status") == 1)
             {
                 ReleaseCharge();
                 anim.SetInteger("Status", 0);
@@ -221,9 +232,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void ClearListFromNone(List<HotSpot> list)
     {
-        for(int i = list.Count - 1; i >= 0; i--)
+        for (int i = list.Count - 1; i >= 0; i--)
         {
-            if(list[i] == null)
+            if (list[i] == null)
             {
                 list.RemoveAt(i);
             }
@@ -434,7 +445,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void PlaySound(SoundKeys soundKey)
     {
-        switch(soundKey)
+        switch (soundKey)
         {
             case SoundKeys.Walk:
                 audioSource.PlayOneShot(playerWalking[UnityEngine.Random.Range(0, playerWalking.Count)]);
@@ -463,6 +474,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-	#endregion
+    private JumpDirections? GetPlanetJumpDirection()
+    {
+        Ray ray = new Ray(transform.position, transform.up);
+        RaycastHit hit;
+        Debug.DrawRay(ray.origin, ray.origin * 5f);
+        if (Physics.Raycast(ray, out hit))
+        {
+            direction = hit.transform.GetComponent<Section>().Direction;
+            return direction;
+        }
+        return null;
+    }
 
+    private void PlanetJump()
+    {
+        if (direction != null)
+        {
+            gameFlow.LeavePlanet((JumpDirections) direction);
+        }
+    }
+
+    private void EnableMovement()
+    {
+        canMove = true;
+    }
+    #endregion
 }
