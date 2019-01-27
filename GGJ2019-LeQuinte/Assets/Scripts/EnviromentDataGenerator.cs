@@ -18,6 +18,7 @@ public class EnviromentDataGenerator : MonoBehaviour
     public List<Rock> generatedRocks = new List<Rock>();
     public List<Tree> generatedTrees = new List<Tree>();
     public List<Fauna> generatedFauna = new List<Fauna>();
+    public List<Grass> generatedGrass = new List<Grass>();
     public List<Atmosphere> generatedAtmospheres = new List<Atmosphere>();
     public List<PlanetAppearance> generatedPlanetAppearances = new List<PlanetAppearance>();
 
@@ -67,6 +68,19 @@ public class EnviromentDataGenerator : MonoBehaviour
                     AssetDatabase.CreateAsset(newSea, currentEndingPath + newSea.name + ".asset");
                     generatedSeas.Add(newSea);
                     EditorUtility.SetDirty(newSea);
+                }
+            }
+            else if (envType == "grass")
+            {
+                foreach (string color in colorTypes)
+                {
+                    Grass newGrass = ScriptableObject.CreateInstance<Grass>();
+                    newGrass.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + envType + ".png", typeof(Sprite));
+                    newGrass.name = color + "_" + envType;
+                    newGrass.colorType = GetColorType(color);
+                    AssetDatabase.CreateAsset(newGrass, currentEndingPath + newGrass.name + ".asset");
+                    generatedGrass.Add(newGrass);
+                    EditorUtility.SetDirty(newGrass);
                 }
             }
             else if (envType == "fauna")
@@ -165,6 +179,7 @@ public class EnviromentDataGenerator : MonoBehaviour
         generatedAtmospheres.Clear();
         generatedSeas.Clear();
         generatedRocks.Clear();
+        generatedGrass.Clear();
         generatedFauna.Clear();
         generatedPlanetAppearances.Clear();
         generatedTrees.Clear();

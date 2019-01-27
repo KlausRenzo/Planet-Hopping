@@ -56,6 +56,7 @@ MonoBehaviour:
   - atmospheres
   - seas
   - fauna
+  - grass
   shapedEnviromentTypes:
   - rocks
   coloredAndShapedEnviromentTypes:
@@ -105,6 +106,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5c055f9e2f02d1a4e81ed84613386998, type: 2}
   - {fileID: 11400000, guid: f0285fe02c0272c488ecd03cdaea70c7, type: 2}
   - {fileID: 11400000, guid: 6d8a37471d4baf74880bac543a80a5af, type: 2}
+  generatedGrass:
+  - {fileID: 11400000, guid: b07f26b012d19ce47af4f95cf65b7c2d, type: 2}
+  - {fileID: 11400000, guid: 0a4ab89f3e24c5549af41b2bbabd2701, type: 2}
+  - {fileID: 11400000, guid: a97ebf53981bde0468fb0eb015a70173, type: 2}
+  - {fileID: 11400000, guid: a3b0f3de0b8cb0d47a266378895c9b4f, type: 2}
   generatedAtmospheres:
   - {fileID: 11400000, guid: bd0b0a6381d671f4a913ed2145575543, type: 2}
   - {fileID: 11400000, guid: 4d533193fe8ef1a40affacc9db191f5f, type: 2}

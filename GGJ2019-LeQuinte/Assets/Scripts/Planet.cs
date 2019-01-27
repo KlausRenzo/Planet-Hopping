@@ -40,6 +40,19 @@ public class Planet : MonoBehaviour
         fgClouds.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed/2f*3f);
     }
 
+    public void PlaceGrass(List<GameObject> environmentalGrassAnchors)
+    {
+        int elementsLeft = environmentalGrassAnchors.Count - 1;
+        int i = 0;
+        while (elementsLeft >= 0)
+        {
+            GrassHotspot grassHotspot = environmentalGrassAnchors[elementsLeft].GetComponent<GrassHotspot>();
+            SpriteRenderer spriteRenderer = environmentalGrassAnchors[elementsLeft].GetComponent<SpriteRenderer>();
+            elementsLeft--;
+            grassHotspot.enviromentElement = planetInfos.grassType;
+            spriteRenderer.sortingLayerName = "Grass";
+        }
+    }
     public void GeneratePlanet(List<GameObject> enviromentAnchors)
     {
         int elementsLeft = enviromentAnchors.Count - 1;
