@@ -476,7 +476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1521140619083104
 GameObject:
   m_ObjectHideFlags: 1
@@ -1586,6 +1586,7 @@ MonoBehaviour:
   ghostAtmosphereImage: {fileID: 114727248230545982}
   startingPlanetInfos: {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156,
     type: 2}
+  winText: {fileID: 1508976766265382}
   planetName: {fileID: 114090277820412346}
   gameFlow: {fileID: 0}
   playerMovement: {fileID: 0}

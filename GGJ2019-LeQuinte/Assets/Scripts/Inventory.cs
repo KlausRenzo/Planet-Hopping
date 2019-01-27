@@ -28,6 +28,7 @@ public class Inventory : MonoBehaviour
     public Image ghostAtmosphereImage;
 
     public PlanetInfo startingPlanetInfos;
+    public GameObject winText;
     public Text planetName;
 
     [HideInInspector]
@@ -103,6 +104,7 @@ public class Inventory : MonoBehaviour
             currentAtmosphere == startingPlanetInfos.atmosphereType)
         {
             gameFlow.Win();
+            winText.SetActive(true);
         }
     }
 
