@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3bdb2cd68f901469e7cc149151eb49, type: 3}
-  m_Name: post-processing
+  m_Name: post-pro-sam
   m_EditorClassIdentifier: 
   debugViews:
     m_Enabled: 1
@@ -29,18 +29,18 @@ MonoBehaviour:
     m_Settings:
       excludeSkybox: 1
   antialiasing:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       method: 0
       fxaaSettings:
-        preset: 4
+        preset: 2
       taaSettings:
         jitterSpread: 0.75
         sharpen: 0.3
         stationaryBlending: 0.95
         motionBlending: 0.85
   ambientOcclusion:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       intensity: 1.44
       radius: 0.3
@@ -69,7 +69,7 @@ MonoBehaviour:
       screenEdgeMask:
         intensity: 0.03
   depthOfField:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       focusDistance: 10
       aperture: 27.1
@@ -80,8 +80,8 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       shutterAngle: 338
-      sampleCount: 7
-      frameBlending: 0.422
+      sampleCount: 4
+      frameBlending: 0
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
@@ -308,23 +308,23 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       spectralTexture: {fileID: 0}
-      intensity: 0.426
+      intensity: 0.744
   grain:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       colored: 1
-      intensity: 0.077
-      size: 0.61
-      luminanceContribution: 0.385
+      intensity: 0.044
+      size: 1
+      luminanceContribution: 0.8
   vignette:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.348
-      smoothness: 0.01
-      roundness: 0.988
+      intensity: 0.2
+      smoothness: 0.168
+      roundness: 1
       mask: {fileID: 0}
       opacity: 1
       rounded: 0

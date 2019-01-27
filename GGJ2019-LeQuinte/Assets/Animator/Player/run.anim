@@ -20,19 +20,19 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 7b96834d2bdd8c840af9720ea73a6949, type: 3}
-    - time: 0.25
+    - time: 0.16666667
       value: {fileID: 21300000, guid: 010601c44ed8a1944ad8273085b6babe, type: 3}
-    - time: 0.5
+    - time: 0.33333334
       value: {fileID: 21300000, guid: 7de5352a59a7fac409f412217a7b1064, type: 3}
-    - time: 0.75
+    - time: 0.5
       value: {fileID: 21300000, guid: 51c73780b27891f4e8f823f2f9fae635, type: 3}
-    - time: 1
+    - time: 0.6666667
       value: {fileID: 21300000, guid: 12d08a36d1a9be749ae0f180809b28a2, type: 3}
     attribute: m_Sprite
     path: sprite
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 4
+  m_SampleRate: 6
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -57,7 +57,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.25
+    m_StopTime: 0.8333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -78,14 +78,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.25
-    functionName: PlaySound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1
+  - time: 0.6666667
     functionName: PlaySound
     data: 
     objectReferenceParameter: {fileID: 0}
