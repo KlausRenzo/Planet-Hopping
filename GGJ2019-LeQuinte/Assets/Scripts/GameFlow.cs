@@ -10,12 +10,21 @@ public class GameFlow : MonoBehaviour
 
     public Action<List<PlanetInfo>> LoadNextPlanets;
 
+    public List<GameObject> enviromentAnchors;
     public List<PlanetInfo> nextPlanetsToLoad;
     public GameObject currentPlanet;
+    public GameObject hotspotPrefab;
 
     public KeyCode moveToLeftPlanet;
     public KeyCode moveToTopPlanet;
     public KeyCode moveToRightPlanet;
+
+    public float minScaler = 0.6f;
+    public float maxScaler = 1.2f;
+
+    public float distanceTraveled = 2;
+    public int maxNumberOfElements = 10;
+    public int minNumberOfElements = 4;
 
     private PlayerMovement playerMovement;
     private PlanetGenerator planetGenerator;
@@ -63,6 +72,10 @@ public class GameFlow : MonoBehaviour
         Destroy(currentPlanet);
         currentPlanet = planetGenerator.GeneratePlanet((int) jumpDirection);
 
+        LaunchAgent();
+
+        currentPlanet.GetComponent<Planet>().GeneratePlanet(enviromentAnchors);
+
         nextPlanetsToLoad.Clear();
         nextPlanetsToLoad = planetGenerator.GetNextPlanets();
 
@@ -71,7 +84,6 @@ public class GameFlow : MonoBehaviour
         //animation land
         playerMovement.currentPlanet = currentPlanet.GetComponent<Planet>();
         playerMovement.RefreshMovementInfo();
-        LaunchAgent();
         playerMovement.canMove = true;
     }
 
@@ -85,7 +97,6 @@ public class GameFlow : MonoBehaviour
 
     private void LaunchAgent()
     {
-        Debug.Log("Agent");
         List<GameObject> movementGameObjects = new List<GameObject>();
         switch (currentPlanet.GetComponent<Planet>().planetInfos.planetAppearanceType.shapeType)
         {
@@ -102,13 +113,19 @@ public class GameFlow : MonoBehaviour
                 movementGameObjects = currentPlanet.GetComponent<Planet>().movementEsa;
                 break;
         }
+
         GameObject agentGameObject = new GameObject();
         Agent agent = agentGameObject.AddComponent<Agent>();
+
         float progress = 0f;
+        int numberOfElementsToPlace = UnityEngine.Random.Range(minNumberOfElements, maxNumberOfElements);
         Vector3 lastInsert = Vector3.zero;
-        List<GameObject> Anchors = new List<GameObject>();
-        while (progress < movementGameObjects.Count)
+        List<GameObject> anchors = new List<GameObject>();
+        int i = 0;
+        while (anchors.Count < numberOfElementsToPlace)
         {
+            i++;
+
             if (Mathf.FloorToInt(progress) + 1 >= movementGameObjects.Count)
                 break;
             Vector3 first = movementGameObjects[Mathf.FloorToInt(progress)].transform.position;
@@ -117,16 +134,23 @@ public class GameFlow : MonoBehaviour
             Vector3 second = movementGameObjects[Mathf.FloorToInt(progress) + 1 ].transform.position;
             agent.transform.position = Vector3.Lerp(first, second, progress % 1);
 
-            if ((agent.transform.position - lastInsert).magnitude > 0.5f)
+            if (i >= UnityEngine.Random.Range(5,10))
             {
-                GameObject g = new GameObject();
+                GameObject g = Instantiate(hotspotPrefab, currentPlanet.transform.Find("Terrain"));
                 g.transform.position = agent.transform.position;
-                g.transform.parent = currentPlanet.transform.Find("Terrain");
                 lastInsert = g.transform.position;
-                Anchors.Add(g);
+                g.transform.up = Vector2.Perpendicular(second - first);
+                float scaler = UnityEngine.Random.Range(minScaler, maxScaler);
+                g.transform.localScale = Vector3.one * scaler;
+                anchors.Add(g);
+                i = 0;
             }
-            progress += Time.deltaTime;
+            progress += Time.deltaTime * 20;
+            progress %= movementGameObjects.Count;
         }
+        enviromentAnchors = anchors;
+
+        Destroy(agentGameObject);
     }
 
     #endregion

@@ -51,11 +51,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb39ccd53c4a0104380e5fd8ba0157dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enviromentAnchors: []
   nextPlanetsToLoad:
   - {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156, type: 2}
-  - {fileID: 11400000, guid: baf5dfbd01c85ce4ab74fc70a9babe91, type: 2}
-  - {fileID: 11400000, guid: de839c46456418b4f915c0eb713e2d1e, type: 2}
+  - {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156, type: 2}
+  - {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156, type: 2}
   currentPlanet: {fileID: 0}
+  hotspotPrefab: {fileID: 1386660803835512, guid: 874581279c520a3459d92f9e011d4ae3,
+    type: 2}
   moveToLeftPlanet: 106
   moveToTopPlanet: 105
   moveToRightPlanet: 108
+  distanceTraveled: 0.5
+  maxNumberOfElements: 10
+  minNumberOfElements: 4

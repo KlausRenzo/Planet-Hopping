@@ -56,11 +56,23 @@ TagManager:
   - name: Planet
     uniqueID: 3612418063
     locked: 0
+  - name: Rocks
+    uniqueID: 664878989
+    locked: 0
+  - name: Trees
+    uniqueID: 677008391
+    locked: 0
+  - name: Fauna
+    uniqueID: 3972995457
+    locked: 0
   - name: Player
     uniqueID: 3749263921
     locked: 0
   - name: Grass
     uniqueID: 2764595617
+    locked: 0
+  - name: Seas
+    uniqueID: 328975709
     locked: 0
   - name: CloudsFG
     uniqueID: 1542831357

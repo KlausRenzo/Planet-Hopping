@@ -26,11 +26,6 @@ public class Planet : MonoBehaviour
 
     #endregion
 
-    private void Start()
-    {
-        GeneratePlanet();
-    }
-
     private void Update()
     {
         PlanetTick();
@@ -45,9 +40,42 @@ public class Planet : MonoBehaviour
         fgClouds.transform.rotation *= Quaternion.Euler(0,0, - Time.deltaTime * planetSpeed/2f*3f);
     }
 
-    public void GeneratePlanet()
+    public void GeneratePlanet(List<GameObject> enviromentAnchors)
     {
-        
+        int elementsLeft = enviromentAnchors.Count - 1;
+        int i = 0;
+        while (elementsLeft >= 0)
+        {
+            HotSpot hotSpot = enviromentAnchors[elementsLeft].GetComponent<HotSpot>();
+            SpriteRenderer spriteRenderer = enviromentAnchors[elementsLeft].GetComponent<SpriteRenderer>();
+            switch (i)
+            {
+                case 0:
+                    i++;
+                    elementsLeft--;
+                    hotSpot.enviromentElement = planetInfos.faunaType;
+                    spriteRenderer.sortingLayerName = "Fauna";
+                    break;
+                case 1:
+                    i++;
+                    elementsLeft--;
+                    hotSpot.enviromentElement = planetInfos.rockType;
+                    spriteRenderer.sortingLayerName = "Rocks";
+                    break;
+                case 2:
+                    i++;
+                    elementsLeft--;
+                    hotSpot.enviromentElement = planetInfos.seaType;
+                    spriteRenderer.sortingLayerName = "Seas";
+                    break;
+                case 3:
+                    i = 0;
+                    elementsLeft--;
+                    hotSpot.enviromentElement = planetInfos.treeType;
+                    spriteRenderer.sortingLayerName = "Trees";
+                    break;
+            }
+        }
     }
 
     #endregion

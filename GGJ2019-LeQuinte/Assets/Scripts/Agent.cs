@@ -9,14 +9,6 @@ public class Agent : MonoBehaviour
 {
     public PlayerMovement Player;
 
-    void Start()
-    {
-    }
-
-    void OnDestroy()
-    {
-    }
-
     void OnDrawGizmos()
     {
         Gizmos.DrawSphere(gameObject.transform.position, 0.1f);
