@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    public enum SoundKeys
+    {
+        Walk,
+        Hop,
+        Jump,
+        Land,
+        Atmos,
+        Tree,
+        Rock,
+        Sea,
+    }
+
     #region Fields
 
     public KeyCode moveLeft;
     public KeyCode moveRight;
     public KeyCode jump;
+    public KeyCode pickUp;
 
     public float timeForPlanetHop = 2;
     public float playerSpeed;
@@ -16,15 +30,27 @@ public class PlayerMovement : MonoBehaviour
     public Planet currentPlanet;
     public bool canMove = false;
 
-    [HideInInspector] public Directions currentDirection;
+    public List<AudioClip> playerWalking;
+    public AudioClip planetHopSound;
+    public AudioClip jumpSound;
+    public AudioClip landingSound;
+    public AudioClip pickupAtmosphere;
+    public AudioClip pickupTree;
+    public AudioClip pickupRock;
+    public AudioClip pickupSea;
+
+    [HideInInspector]
+    public Directions currentDirection;
 
     private float currentLerpIndex;
-    public int currentMovementIndex;
+    private int currentMovementIndex;
     private float currentLerp;
+    private AudioSource audioSource;
     private ShapeType currentShapeType;
     private int horizontalMovement;
     private Animator anim;
-    private float startJumpTime;
+    private bool isCharging = false;
+    public bool isJumping = false;
 
     #endregion
 
@@ -33,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -118,37 +145,60 @@ public class PlayerMovement : MonoBehaviour
             horizontalMovement++;
         }
 
-        if (Input.GetKeyDown(jump))
+        if (Input.GetKeyDown(jump) && !isJumping)
         {
-            startJumpTime = Time.time;
+            anim.SetInteger("Status", 1);
         }
-
-        if (Input.GetKeyUp(jump))
+        if (Input.GetKeyUp(jump) && !isJumping)
         {
-            if (Time.time - startJumpTime <= 0)
+            isJumping = true;
+
+            if (isCharging)
             {
-                //planetHop
+                ReleaseCharge();
+                anim.SetInteger("Status", 3);
             }
             else
             {
                 anim.SetInteger("Status", 2);
             }
         }
+
+        if(Input.GetKeyDown(pickUp))
+        {
+            if(isCharging || anim.GetInteger("Status") == 1)
+            {
+                ReleaseCharge();
+                anim.SetInteger("Status", 0);
+            }
+            else
+            {
+                //pickUp
+            }
+        }
+    }
+
+    public void SetStatus(int integer)
+    {
+        anim.SetInteger("Status", integer);
     }
 
     public void SetLanded()
     {
-        anim.SetBool("isJumping", false);
+        isJumping = false;
+        anim.SetInteger("Status", 0);
     }
 
     public void EndlessCharge()
     {
+        isCharging = true;
         anim.speed = 0;
     }
 
     private void ReleaseCharge()
     {
         anim.speed = 1;
+        isCharging = false;
     }
 
     public void RefreshMovementInfo()
@@ -330,5 +380,37 @@ public class PlayerMovement : MonoBehaviour
         return Vector2.Perpendicular(secondVector - firstVector);
     }
 
-    #endregion
+    public void PlaySound(SoundKeys soundKey)
+    {
+        switch(soundKey)
+        {
+            case SoundKeys.Walk:
+                audioSource.PlayOneShot(playerWalking[Random.Range(0, playerWalking.Count)]);
+                break;
+            case SoundKeys.Hop:
+                audioSource.PlayOneShot(planetHopSound);
+                break;
+            case SoundKeys.Jump:
+                audioSource.PlayOneShot(jumpSound);
+                break;
+            case SoundKeys.Land:
+                audioSource.PlayOneShot(landingSound);
+                break;
+            case SoundKeys.Tree:
+                audioSource.PlayOneShot(pickupTree);
+                break;
+            case SoundKeys.Rock:
+                audioSource.PlayOneShot(pickupRock);
+                break;
+            case SoundKeys.Sea:
+                audioSource.PlayOneShot(pickupSea);
+                break;
+            case SoundKeys.Atmos:
+                audioSource.PlayOneShot(pickupAtmosphere);
+                break;
+        }
+    }
+
+	#endregion
+
 }
