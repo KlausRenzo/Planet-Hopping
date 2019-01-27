@@ -51,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
     public bool isJumping = false;
     public List<HotSpot> pickableHotSpots;
     public ParticleSystem landingParticle;
+    [Space(10)]
+    public SpriteRenderer thinkingImage;
+    public GameObject thinkingBaloon;
 
     [HideInInspector]
     public Directions currentDirection;
@@ -136,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalMovement == 1)
         {
             Look(Directions.Right);
-            if (anim.GetInteger("Status") == 0)
+            if (anim.GetInteger("Status") == 0 || anim.GetInteger("Status") == 1000)
             {
                 anim.SetInteger("Status", 6);
             }
@@ -144,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
         else if (horizontalMovement == -1)
         {
             Look(Directions.Left);
-            if (anim.GetInteger("Status") == 0)
+            if (anim.GetInteger("Status") == 0 || anim.GetInteger("Status") == 1000)
             {
                 anim.SetInteger("Status", 6);
             }
@@ -187,12 +190,26 @@ public class PlayerMovement : MonoBehaviour
 
     #region Methods
 
+    public void StartThinking()
+    {
+        anim.SetInteger("Status", 1000);
+        thinkingBaloon.SetActive(true);
+        thinkingImage.sprite = gameFlow.inventory.startingPlanetInfos.planetAppearanceType.enviromentSprite;
+        gameFlow.inventory.ThinkOn();
+    }
+
+    public void StopThinking()
+    {
+        anim.SetInteger("Status", 0);
+        thinkingBaloon.SetActive(false);
+        gameFlow.inventory.ThinkOff();
+    }
+
     private void CheckInputs()
     {
         horizontalMovement = 0;
         if (!Input.GetKey(moveLeft) && !Input.GetKey(moveRight))
         {
-            Debug.Log("decreasing");
             playerSpeed = Mathf.Clamp(playerSpeed - Time.deltaTime * 10, PlayerSpeedLimiters.x, PlayerSpeedLimiters.y);
         }
 

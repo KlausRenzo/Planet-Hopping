@@ -27,7 +27,9 @@ public class GameFlow : MonoBehaviour
 
     private PlayerMovement playerMovement;
     private PlanetGenerator planetGenerator;
-    private Inventory inventory;
+    public Inventory inventory;
+
+    private bool homePlanet = true;
 
     #endregion
 
@@ -89,6 +91,8 @@ public class GameFlow : MonoBehaviour
         LaunchAgent();
 
         currentPlanet.GetComponent<Planet>().GeneratePlanet(enviromentAnchors);
+
+        inventory.SetName(currentPlanet.GetComponent<Planet>().planetName);
 
         nextPlanetsToLoad.Clear();
         nextPlanetsToLoad = planetGenerator.GetNextPlanets();
@@ -168,6 +172,9 @@ public class GameFlow : MonoBehaviour
         playerMovement.GetComponent<Animator>().SetInteger("Status", 100);
         inventory.startingPlanetInfos = currentPlanet.GetComponent<Planet>().planetInfos;
         inventory.LinkGhosts();
+
+        currentPlanet.GetComponent<Planet>().Disintegration();
+        currentPlanet.GetComponent<Planet>().gameFlow = this;
     }
 
     public void Win()

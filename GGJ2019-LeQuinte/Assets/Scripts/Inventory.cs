@@ -28,6 +28,7 @@ public class Inventory : MonoBehaviour
     public Image ghostAtmosphereImage;
 
     public PlanetInfo startingPlanetInfos;
+    public Text planetName;
 
     [HideInInspector]
     public GameFlow gameFlow;
@@ -55,30 +56,35 @@ public class Inventory : MonoBehaviour
         {
             currentFauna = (Fauna)envElem;
             faunaImage.sprite = currentFauna.enviromentSprite;
+            faunaImage.color = Color.white;
             playerMovement.PlaySound(PlayerMovement.SoundKeys.Fauna);
         }
         else if (envElem.GetType() == typeof(Atmosphere))
         {
             currentAtmosphere = (Atmosphere)envElem;
             atmosphereImage.sprite = currentAtmosphere.enviromentSprite;
+            atmosphereImage.color = Color.white;
             playerMovement.PlaySound(PlayerMovement.SoundKeys.Atmos);
         }
         else if (envElem.GetType() == typeof(Sea))
         {
             currentSea = (Sea)envElem;
             seaImage.sprite = currentSea.enviromentSprite;
+            seaImage.color = Color.white;
             playerMovement.PlaySound(PlayerMovement.SoundKeys.Sea);
         }
         else if (envElem.GetType() == typeof(Rock))
         {
             currentRock = (Rock)envElem;
             rockImage.sprite = currentRock.enviromentSprite;
+            rockImage.color = Color.white;
             playerMovement.PlaySound(PlayerMovement.SoundKeys.Rock);
         }
         else if (envElem.GetType() == typeof(Tree))
         {
             currentTree = (Tree)envElem;
             treeImage.sprite = currentTree.enviromentSprite;
+            treeImage.color = Color.white;
             playerMovement.PlaySound(PlayerMovement.SoundKeys.Tree);
         }
 
@@ -100,6 +106,34 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void ThinkOn()
+    {
+        ghostFaunaImage.enabled = true;
+        ghostAtmosphereImage.enabled = true;
+        ghostRockImage.enabled = true;
+        ghostTreeImage.enabled = true;
+        ghostSeaImage.enabled = true;
+        rockImage.enabled = false;
+        atmosphereImage.enabled = false;
+        treeImage.enabled = false;
+        faunaImage.enabled = false;
+        seaImage.enabled = false;
+    }
+
+    public void ThinkOff()
+    {
+        ghostFaunaImage.enabled = false;
+        ghostAtmosphereImage.enabled = false;
+        ghostRockImage.enabled = false;
+        ghostTreeImage.enabled = false;
+        ghostSeaImage.enabled = false;
+        rockImage.enabled = true;
+        atmosphereImage.enabled = true;
+        treeImage.enabled = true;
+        faunaImage.enabled = true;
+        seaImage.enabled = true;
+    }
+
     public void LinkGhosts()
     {
         PlanetInfo planetInfos = gameFlow.currentPlanet.GetComponent<Planet>().planetInfos;
@@ -109,6 +143,11 @@ public class Inventory : MonoBehaviour
         ghostRockImage.sprite = planetInfos.rockType.enviromentSprite;
         ghostSeaImage.sprite = planetInfos.seaType.enviromentSprite;
         ghostTreeImage.sprite = planetInfos.treeType.enviromentSprite;
+    }
+
+    public void SetName(string name)
+    {
+        planetName.text = name;
     }
 
     #endregion

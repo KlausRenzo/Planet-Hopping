@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class Planet : MonoBehaviour 
@@ -14,6 +13,7 @@ public class Planet : MonoBehaviour
     public GameObject fgClouds;
     public SpriteRenderer terrain;
     public SpriteRenderer atmosphere;
+    public GameFlow gameFlow;
 
     public float bgCloudsSpeed;
     public float fgCloudsSpeed;
@@ -32,6 +32,11 @@ public class Planet : MonoBehaviour
     }
 
     #region Methods
+
+    public void Disintegration()
+    {
+        StartCoroutine(Disint());
+    }
 
     public void PlanetTick()
     {
@@ -75,6 +80,34 @@ public class Planet : MonoBehaviour
                     spriteRenderer.sortingLayerName = "Trees";
                     break;
             }
+        }
+    }
+
+    IEnumerator Disint()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        float t = 0;
+        float maxt = 5;
+        float l = 0;
+        while(t < maxt)
+        {
+            t += Time.deltaTime;
+            l = t / maxt;
+
+            Color distColor = new Color(Mathf.Lerp(1, 0.2f, l), Mathf.Lerp(1, 0.2f, l), Mathf.Lerp(1, 0.2f, l), 1);
+
+            terrain.color = distColor;
+            atmosphere.color = distColor;
+            bgClouds.GetComponent<SpriteRenderer>().color = distColor;
+            fgClouds.GetComponent<SpriteRenderer>().color = distColor;
+            foreach (GameObject go in gameFlow.enviromentAnchors)
+            {
+                SpriteRenderer spriteRend = go.GetComponent<SpriteRenderer>();
+                spriteRend.color = distColor;
+            }
+            
+            yield return null;
         }
     }
 

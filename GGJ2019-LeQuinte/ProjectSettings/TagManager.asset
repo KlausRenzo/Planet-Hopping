@@ -78,3 +78,9 @@ TagManager:
   - name: CloudsFG
     uniqueID: 1542831357
     locked: 0
+  - name: Think1
+    uniqueID: 21642301
+    locked: 0
+  - name: Think2
+    uniqueID: 103295095
+    locked: 0

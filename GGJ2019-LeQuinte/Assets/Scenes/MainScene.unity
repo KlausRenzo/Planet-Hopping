@@ -291,21 +291,6 @@ Prefab:
       propertyPath: gameFlow
       value: 
       objectReference: {fileID: 948600078}
-    - target: {fileID: 114427869944887922, guid: f3db5c0a6fc22504596b74a5f6d9417d,
-        type: 2}
-      propertyPath: PlayerSpeedLimiters.y
-      value: 4.20765
-      objectReference: {fileID: 0}
-    - target: {fileID: 114427869944887922, guid: f3db5c0a6fc22504596b74a5f6d9417d,
-        type: 2}
-      propertyPath: PlayerSpeedMultiplier
-      value: 2.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 114427869944887922, guid: f3db5c0a6fc22504596b74a5f6d9417d,
-        type: 2}
-      propertyPath: PlayerSpeedLimiters.x
-      value: 1.0928962
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
   m_IsPrefabAsset: 0
@@ -787,6 +772,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1091409566}
   m_Script: {fileID: 11500000, guid: eb39ccd53c4a0104380e5fd8ba0157dd, type: 3}
+--- !u!114 &1070016141 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114701465670733812, guid: b6e3ac799d0110e4cad00288fc50e9d1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1780422855}
+  m_Script: {fileID: 11500000, guid: fb3138f284c3b164392b09a9af0fc5f4, type: 3}
 --- !u!1 &1075310306
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +897,11 @@ Prefab:
       propertyPath: currentPlanet
       value: 
       objectReference: {fileID: 1142169782}
+    - target: {fileID: 114231112979411852, guid: 8bfe84c0650d98f4a86c66cb12d76b67,
+        type: 2}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1070016141}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bfe84c0650d98f4a86c66cb12d76b67, type: 2}
   m_IsPrefabAsset: 0
@@ -947,58 +943,6 @@ Prefab:
     - target: {fileID: 4285331916192882, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1078262990167724, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1605817689774720, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1019308993520186, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1354213990472502, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1150584106543702, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1102553745709734, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440174027725550, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1661752646423844, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185432450782940, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1042119613605038, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1005790650127528, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1610710682573528, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1511222689283442, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}
-      propertyPath: m_Name
-      value: Angle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92d259f203fa5ce46b4337aa9abf2287, type: 2}

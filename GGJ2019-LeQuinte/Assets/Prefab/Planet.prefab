@@ -2149,6 +2149,7 @@ MonoBehaviour:
   fgClouds: {fileID: 1620999500085952}
   terrain: {fileID: 212494616996215500}
   atmosphere: {fileID: 212244687017275476}
+  gameFlow: {fileID: 0}
   bgCloudsSpeed: -1
   fgCloudsSpeed: -2
   planetSpeed: 1.5
