@@ -53,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public Animator anim;
 
+    public GameFlow gameFlow;
+
     private SpriteRenderer sprite;
     private float currentLerpIndex;
     private int currentMovementIndex;
@@ -61,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
     private ShapeType currentShapeType;
     private int horizontalMovement;
     private bool isCharging = false;
+    private JumpDirections? direction;
+
     #endregion
 
     #region Unity Callback
@@ -204,7 +208,15 @@ public class PlayerMovement : MonoBehaviour
             if (isCharging)
             {
                 ReleaseCharge();
-                anim.SetInteger("Status", 3);
+                if (GetPlanetJumpDirection() != null)
+                {
+                    anim.SetInteger("Status", 3);
+                    canMove = false;
+                }
+                else
+                {
+                    anim.SetInteger("Status", 0);
+                }
             }
             else
             {
@@ -501,6 +513,35 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-	#endregion
+    public JumpDirections? GetPlanetJumpDirection()
+    {
+        Ray ray = new Ray(transform.position, transform.up);
+        RaycastHit hit;
+        Debug.DrawRay(ray.origin, ray.direction * 5f);
+        if (Physics.Raycast(ray, out hit))
+        {
+            direction = hit.transform.GetComponent<Section>().Direction;
+            Debug.Log(direction);
+            return direction;
+        }
+
+        direction = null;
+        return null;
+    }
+
+    private void EnableMovement()
+    {
+        canMove = true;
+    }
+
+    private void PlanetJump()
+    {
+        if (direction != null)
+        {
+            gameFlow.LeavePlanet((JumpDirections)direction);
+        }
+    }
+
+    #endregion
 
 }
