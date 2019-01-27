@@ -1477,6 +1477,11 @@ MonoBehaviour:
   currentAtmosphere: {fileID: 11400000, guid: f7e8c754c2e2adc4ca227cf18cac0497, type: 2}
   currentPlanetAppearance: {fileID: 11400000, guid: 3a12943f9c8b716438dc70e049e2cf8d,
     type: 2}
+  treeImage: {fileID: 114282415454772840}
+  rockImage: {fileID: 114839745428690774}
+  seaImage: {fileID: 114911436221370792}
+  faunaImage: {fileID: 114859087548222734}
+  atmosphereImage: {fileID: 114727248230545982}
   startingPlanetInfos: {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156,
     type: 2}
 --- !u!114 &114718582566476904

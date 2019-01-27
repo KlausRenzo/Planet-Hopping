@@ -11,4 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cc94940375a6443b15521abb7f2199, type: 3}
   m_Name: test_planet
   m_EditorClassIdentifier: 
-  rockType: {fileID: 11400000, guid: 2f37e501e25decd42a8889bd826eff2a, type: 2}
+  seaType: {fileID: 11400000, guid: a7f6c5cbbb4eeb24286526369ef5c1a8, type: 2}
+  treeType: {fileID: 11400000, guid: 534e94da665ef3242b922eaba2c65442, type: 2}
+  rockType: {fileID: 11400000, guid: 16236a261a5e5de46a9281a1053d45ad, type: 2}
+  faunaType: {fileID: 11400000, guid: 5c055f9e2f02d1a4e81ed84613386998, type: 2}
+  atmosphereType: {fileID: 11400000, guid: 5418f4eff3949d44d92b8278de38888d, type: 2}
+  planetAppearanceType: {fileID: 11400000, guid: 2e87381d57f2b0747a3ae63deea952bf,
+    type: 2}
+  bgCloudSpeed: 1
+  fgCloudSpeed: 2
+  planetSpeed: -1.5

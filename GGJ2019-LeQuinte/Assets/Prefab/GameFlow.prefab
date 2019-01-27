@@ -62,6 +62,7 @@ MonoBehaviour:
   moveToLeftPlanet: 106
   moveToTopPlanet: 105
   moveToRightPlanet: 108
-  distanceTraveled: 0.5
-  maxNumberOfElements: 10
-  minNumberOfElements: 4
+  minScaler: 0.6
+  maxScaler: 1.2
+  maxNumberOfElements: 12
+  minNumberOfElements: 8

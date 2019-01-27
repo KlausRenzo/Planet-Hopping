@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #region Fields
+
+    public Action<EnviromentElement> PickUpElement;
 
     public KeyCode moveLeft;
     public KeyCode moveRight;
@@ -41,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector]
     public Directions currentDirection;
+
+    public List<HotSpot> pickableHotSpots;
 
     private float currentLerpIndex;
     private int currentMovementIndex;
@@ -127,6 +132,30 @@ public class PlayerMovement : MonoBehaviour
         FollowLerp();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("HotSpot"))
+        {
+            HotSpot currentHotSpot = collision.gameObject.GetComponent<HotSpot>();
+
+            pickableHotSpots.Add(currentHotSpot);
+        }
+
+        ClearListFromNone(pickableHotSpots);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("HotSpot"))
+        {
+            HotSpot currentHotSpot = collision.gameObject.GetComponent<HotSpot>();
+
+            pickableHotSpots.Remove(currentHotSpot);
+        }
+
+        ClearListFromNone(pickableHotSpots);
+    }
+
     #endregion
 
     #region Methods
@@ -173,7 +202,30 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                //pickUp
+                PickUp();
+            }
+        }
+    }
+
+    private void PickUp()
+    {
+        if (pickableHotSpots.Count == 0)
+        {
+            PickUpElement(currentPlanet.planetInfos.atmosphereType);
+        }
+        else
+        {
+            PickUpElement(pickableHotSpots[0].enviromentElement);
+        }
+    }
+
+    private void ClearListFromNone(List<HotSpot> list)
+    {
+        for(int i = list.Count - 1; i >= 0; i--)
+        {
+            if(list[i] == null)
+            {
+                list.RemoveAt(i);
             }
         }
     }
@@ -385,7 +437,7 @@ public class PlayerMovement : MonoBehaviour
         switch(soundKey)
         {
             case SoundKeys.Walk:
-                audioSource.PlayOneShot(playerWalking[Random.Range(0, playerWalking.Count)]);
+                audioSource.PlayOneShot(playerWalking[UnityEngine.Random.Range(0, playerWalking.Count)]);
                 break;
             case SoundKeys.Hop:
                 audioSource.PlayOneShot(planetHopSound);

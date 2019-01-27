@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour 
 {
@@ -14,16 +15,56 @@ public class Inventory : MonoBehaviour
     public Atmosphere currentAtmosphere;
     public PlanetAppearance currentPlanetAppearance;
 
+    public Image treeImage;
+    public Image rockImage;
+    public Image seaImage;
+    public Image faunaImage;
+    public Image atmosphereImage;
+
     public PlanetInfo startingPlanetInfos;
 
-	#endregion
+    #endregion
 
-	#region Unity Callbacks
+    #region Unity Callbacks
 
-	#endregion
+    private void Awake()
+    {
+        FindObjectOfType<PlayerMovement>().PickUpElement += AddInInventory;
+    }
 
-	#region Methods
+    #endregion
 
-	#endregion
+    #region Methods
+
+    public void AddInInventory(EnviromentElement envElem)
+    {
+        if(envElem.GetType() == typeof(Fauna))
+        {
+            currentFauna = (Fauna)envElem;
+            faunaImage.sprite = currentFauna.enviromentSprite;
+        }
+        else if (envElem.GetType() == typeof(Atmosphere))
+        {
+            currentAtmosphere = (Atmosphere)envElem;
+            atmosphereImage.sprite = currentAtmosphere.enviromentSprite;
+        }
+        else if (envElem.GetType() == typeof(Sea))
+        {
+            currentSea = (Sea)envElem;
+            seaImage.sprite = currentSea.enviromentSprite;
+        }
+        else if (envElem.GetType() == typeof(Rock))
+        {
+            currentRock = (Rock)envElem;
+            rockImage.sprite = currentRock.enviromentSprite;
+        }
+        else if (envElem.GetType() == typeof(Tree))
+        {
+            currentTree = (Tree)envElem;
+            treeImage.sprite = currentTree.enviromentSprite;
+        }
+    }
+
+    #endregion
 
 }

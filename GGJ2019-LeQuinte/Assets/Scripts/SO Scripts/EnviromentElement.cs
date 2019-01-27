@@ -5,4 +5,5 @@ using UnityEngine;
 public class EnviromentElement : ScriptableObject
 {
     public Sprite enviromentSprite;
+
 }

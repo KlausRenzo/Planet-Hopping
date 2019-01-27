@@ -8,9 +8,6 @@ public class HotSpot : MonoBehaviour
     #region Fields
 
     public EnviromentElement enviromentElement;
-
-    public bool canBePickedUp = false;
-
     private SpriteRenderer spriteRenderer;
 
     #endregion
@@ -24,23 +21,6 @@ public class HotSpot : MonoBehaviour
         {
             spriteRenderer.sprite = enviromentElement.enviromentSprite;
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player"))
-        {
-            canBePickedUp = true;
-        }
-    }
-
-    #endregion
-
-    #region Methods
-
-    public void PickUp()
-    {
-
     }
 
     #endregion
