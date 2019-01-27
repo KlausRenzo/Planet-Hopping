@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f82d4b5c8d25d9943901046cc80a06bc, type: 3}
-  m_Name: quad_fauna
+  m_Name: blue_fauna
   m_EditorClassIdentifier: 
-  enviromentSprite: {fileID: 0}
-  shapeType: 1
+  enviromentSprite: {fileID: 21300000, guid: 935830374c569f847b470873673091aa, type: 3}
+  colorType: 3

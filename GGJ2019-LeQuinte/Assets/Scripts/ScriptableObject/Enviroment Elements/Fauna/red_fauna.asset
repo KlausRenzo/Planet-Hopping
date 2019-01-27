@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f82d4b5c8d25d9943901046cc80a06bc, type: 3}
-  m_Name: circle_fauna
+  m_Name: red_fauna
   m_EditorClassIdentifier: 
-  enviromentSprite: {fileID: 0}
-  shapeType: 3
+  enviromentSprite: {fileID: 21300000, guid: 9d20fe32a21625b48bf9fe84517ddb6d, type: 3}
+  colorType: 1

@@ -69,6 +69,19 @@ public class EnviromentDataGenerator : MonoBehaviour
                     EditorUtility.SetDirty(newSea);
                 }
             }
+            else if (envType == "fauna")
+            {
+                foreach (string color in colorTypes)
+                {
+                    Fauna newFauna = ScriptableObject.CreateInstance<Fauna>();
+                    newFauna.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + color + "_" + envType + ".png", typeof(Sprite));
+                    newFauna.name = color + "_" + envType;
+                    newFauna.colorType = GetColorType(color);
+                    AssetDatabase.CreateAsset(newFauna, currentEndingPath + newFauna.name + ".asset");
+                    generatedFauna.Add(newFauna);
+                    EditorUtility.SetDirty(newFauna);
+                }
+            }
 
             EditorUtility.DisplayProgressBar("Generate Enviroment Data", "Generating " + envType, progress / maxProgress);
             progress++;
@@ -93,19 +106,6 @@ public class EnviromentDataGenerator : MonoBehaviour
                         generatedRocks.Add(newRock);
                         EditorUtility.SetDirty(newRock);
                     }
-                }
-            }
-            else if (envType == "fauna")
-            {
-                foreach (string shape in shapeTypes)
-                {
-                    Fauna newFauna = ScriptableObject.CreateInstance<Fauna>();
-                    newFauna.enviromentSprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritePath + "/" + shape + "_" + envType + ".png", typeof(Sprite));
-                    newFauna.name = shape + "_" + envType;
-                    newFauna.shapeType = GetShapeType(shape);
-                    AssetDatabase.CreateAsset(newFauna, currentEndingPath + newFauna.name + ".asset");
-                    generatedFauna.Add(newFauna);
-                    EditorUtility.SetDirty(newFauna);
                 }
             }
 

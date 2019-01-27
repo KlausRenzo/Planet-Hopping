@@ -117,11 +117,11 @@ public class PlanetGenerator : MonoBehaviour
 
         if (IsMainProbabilityType(ProbabilityType.Shape))
         {
-            newPlanetInfo.faunaType = dataGenerator.generatedFauna[GetFilteredEnviromentListIndex(dataGenerator.generatedFauna, mainShape)];
+            newPlanetInfo.faunaType = dataGenerator.generatedFauna[GetFilteredEnviromentListIndex(dataGenerator.generatedFauna, mainColor)];
         }
         else
         {
-            newPlanetInfo.faunaType = dataGenerator.generatedFauna[GetFilteredEnviromentListIndex(dataGenerator.generatedFauna, dataGenerator.GetComplementaryShapeType(mainShape))];
+            newPlanetInfo.faunaType = dataGenerator.generatedFauna[GetFilteredEnviromentListIndex(dataGenerator.generatedFauna, dataGenerator.GetComplementaryColorType(mainColor))];
         }
 
         if (IsMainProbabilityType(ProbabilityType.Shape))
@@ -209,13 +209,13 @@ public class PlanetGenerator : MonoBehaviour
         return index;
     }
 
-    private int GetFilteredEnviromentListIndex(List<Fauna> list, ShapeType shapeType)
+    private int GetFilteredEnviromentListIndex(List<Fauna> list, ColorType colorType)
     {
         int index;
 
         for (index = 0; index < list.Count; index++)
         {
-            if (list[index].shapeType == shapeType)
+            if (list[index].colorType == colorType)
             {
                 return index;
             }

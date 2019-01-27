@@ -55,8 +55,8 @@ MonoBehaviour:
   coloredEnviromentTypes:
   - atmospheres
   - seas
-  shapedEnviromentTypes:
   - fauna
+  shapedEnviromentTypes:
   - rocks
   coloredAndShapedEnviromentTypes:
   - trees
@@ -101,10 +101,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d8025df2317646e4bbade25119d28faf, type: 2}
   - {fileID: 11400000, guid: 2fa201bf3f0109149aa7709d6fe69a32, type: 2}
   generatedFauna:
-  - {fileID: 11400000, guid: b3473d897bd0ab14d906178382703f02, type: 2}
-  - {fileID: 11400000, guid: 4eb5539d663cdf94a84b130b819cc427, type: 2}
-  - {fileID: 11400000, guid: bd56ee577b365524f991e8e74ef990e6, type: 2}
-  - {fileID: 11400000, guid: 224a44a2b0cf42e40b067468db1a7be2, type: 2}
+  - {fileID: 11400000, guid: fe3c8aeabc6df934bad287cadb17bcb6, type: 2}
+  - {fileID: 11400000, guid: 5c055f9e2f02d1a4e81ed84613386998, type: 2}
+  - {fileID: 11400000, guid: f0285fe02c0272c488ecd03cdaea70c7, type: 2}
+  - {fileID: 11400000, guid: 6d8a37471d4baf74880bac543a80a5af, type: 2}
   generatedAtmospheres:
   - {fileID: 11400000, guid: bd0b0a6381d671f4a913ed2145575543, type: 2}
   - {fileID: 11400000, guid: 4d533193fe8ef1a40affacc9db191f5f, type: 2}

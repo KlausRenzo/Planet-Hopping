@@ -22,9 +22,8 @@ public class GameFlow : MonoBehaviour
     public float minScaler = 0.6f;
     public float maxScaler = 1.2f;
 
-    public float distanceTraveled = 2;
-    public int maxNumberOfElements = 10;
-    public int minNumberOfElements = 4;
+    public int maxNumberOfElements;
+    public int minNumberOfElements;
 
     private PlayerMovement playerMovement;
     private PlanetGenerator planetGenerator;
@@ -114,43 +113,32 @@ public class GameFlow : MonoBehaviour
                 break;
         }
 
-        GameObject agentGameObject = new GameObject();
-        Agent agent = agentGameObject.AddComponent<Agent>();
-
-        float progress = 0f;
         int numberOfElementsToPlace = UnityEngine.Random.Range(minNumberOfElements, maxNumberOfElements);
-        Vector3 lastInsert = Vector3.zero;
         List<GameObject> anchors = new List<GameObject>();
-        int i = 0;
+
         while (anchors.Count < numberOfElementsToPlace)
         {
-            i++;
+            int firstIndex = UnityEngine.Random.Range(0, movementGameObjects.Count);
+            int secondIndex = (firstIndex + 1) % movementGameObjects.Count; 
 
-            if (Mathf.FloorToInt(progress) + 1 >= movementGameObjects.Count)
-                break;
-            Vector3 first = movementGameObjects[Mathf.FloorToInt(progress)].transform.position;
-            lastInsert = (lastInsert == Vector3.zero) ? first : lastInsert;
+            Vector3 first = movementGameObjects[firstIndex].transform.position;
+            Vector3 second = movementGameObjects[secondIndex].transform.position;
 
-            Vector3 second = movementGameObjects[Mathf.FloorToInt(progress) + 1 ].transform.position;
-            agent.transform.position = Vector3.Lerp(first, second, progress % 1);
+            Vector3 direction = second - first;
+            float distance = direction.magnitude;
+            Vector3 unit = direction.normalized;
 
-            if (i >= UnityEngine.Random.Range(5,10))
-            {
-                GameObject g = Instantiate(hotspotPrefab, currentPlanet.transform.Find("Terrain"));
-                g.transform.position = agent.transform.position;
-                lastInsert = g.transform.position;
-                g.transform.up = Vector2.Perpendicular(second - first);
-                float scaler = UnityEngine.Random.Range(minScaler, maxScaler);
-                g.transform.localScale = Vector3.one * scaler;
-                anchors.Add(g);
-                i = 0;
-            }
-            progress += Time.deltaTime * 20;
-            progress %= movementGameObjects.Count;
+            Vector3 newHotSpotVector = first + (unit * UnityEngine.Random.Range(0f, distance));
+
+            GameObject newHotSpot = Instantiate(hotspotPrefab, currentPlanet.transform.Find("Terrain"));
+            newHotSpot.transform.position = newHotSpotVector;
+            newHotSpot.transform.up = Vector2.Perpendicular(second - first);
+            float scaler = UnityEngine.Random.Range(minScaler, maxScaler);
+            newHotSpot.transform.localScale = Vector3.one * scaler;
+            anchors.Add(newHotSpot);
         }
-        enviromentAnchors = anchors;
 
-        Destroy(agentGameObject);
+        enviromentAnchors = anchors;
     }
 
     #endregion
