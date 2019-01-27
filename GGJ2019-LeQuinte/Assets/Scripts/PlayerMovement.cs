@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isJumping = false;
     public List<HotSpot> pickableHotSpots;
+    public ParticleSystem landingParticle;
 
     [HideInInspector]
     public Directions currentDirection;
@@ -503,6 +504,7 @@ public class PlayerMovement : MonoBehaviour
                 audioSource.PlayOneShot(jumpSound);
                 break;
             case SoundKeys.Land:
+                landingParticle.Play();
                 audioSource.PlayOneShot(landingSound);
                 break;
             case SoundKeys.Tree:

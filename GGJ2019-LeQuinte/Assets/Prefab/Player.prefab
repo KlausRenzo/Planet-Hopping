@@ -300,8 +300,9 @@ MonoBehaviour:
   pickUp: 115
   timeForPlanetHop: 2
   playerSpeed: 1.5
+  PlayerSpeedLimiters: {x: 1.0928962, y: 4.20765}
+  PlayerSpeedMultiplier: 2.59
   currentPlanet: {fileID: 0}
-  landingParticle: {fileID: 198215651144996050}
   canMove: 1
   playerWalking:
   - {fileID: 8300000, guid: dfc928a88c2ed38458f1de8ccd896f8c, type: 3}
@@ -317,6 +318,7 @@ MonoBehaviour:
   pickupFauna: {fileID: 8300000, guid: 6565e7211b7496e45a0491adf55b4257, type: 3}
   isJumping: 0
   pickableHotSpots: []
+  landingParticle: {fileID: 198215651144996050}
   currentDirection: 0
   anim: {fileID: 0}
   gameFlow: {fileID: 0}
