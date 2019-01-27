@@ -66,6 +66,16 @@ public class GameFlow : MonoBehaviour
 
     #region Methods
 
+    public void LeavePlanet()
+    {
+        if (playerMovement.GetPlanetJumpDirection() == null)
+        {
+            return;
+        }
+
+        LeavePlanet((JumpDirections) playerMovement.GetPlanetJumpDirection());
+    }
+
     public void LeavePlanet(JumpDirections jumpDirection)
     {
         //jump -> stop play

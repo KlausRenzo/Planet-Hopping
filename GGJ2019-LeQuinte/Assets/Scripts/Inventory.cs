@@ -31,6 +31,8 @@ public class Inventory : MonoBehaviour
 
     [HideInInspector]
     public GameFlow gameFlow;
+    [HideInInspector]
+    public PlayerMovement playerMovement;
 
     #endregion
 
@@ -40,6 +42,7 @@ public class Inventory : MonoBehaviour
     {
         FindObjectOfType<PlayerMovement>().PickUpElement += AddInInventory;
         gameFlow = FindObjectOfType<GameFlow>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
     #endregion
@@ -52,26 +55,31 @@ public class Inventory : MonoBehaviour
         {
             currentFauna = (Fauna)envElem;
             faunaImage.sprite = currentFauna.enviromentSprite;
+            playerMovement.PlaySound(PlayerMovement.SoundKeys.Fauna);
         }
         else if (envElem.GetType() == typeof(Atmosphere))
         {
             currentAtmosphere = (Atmosphere)envElem;
             atmosphereImage.sprite = currentAtmosphere.enviromentSprite;
+            playerMovement.PlaySound(PlayerMovement.SoundKeys.Atmos);
         }
         else if (envElem.GetType() == typeof(Sea))
         {
             currentSea = (Sea)envElem;
             seaImage.sprite = currentSea.enviromentSprite;
+            playerMovement.PlaySound(PlayerMovement.SoundKeys.Sea);
         }
         else if (envElem.GetType() == typeof(Rock))
         {
             currentRock = (Rock)envElem;
             rockImage.sprite = currentRock.enviromentSprite;
+            playerMovement.PlaySound(PlayerMovement.SoundKeys.Rock);
         }
         else if (envElem.GetType() == typeof(Tree))
         {
             currentTree = (Tree)envElem;
             treeImage.sprite = currentTree.enviromentSprite;
+            playerMovement.PlaySound(PlayerMovement.SoundKeys.Tree);
         }
 
         CheckWin();
