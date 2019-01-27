@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: test1_planetinfo
   m_EditorClassIdentifier: 
   seaType: {fileID: 11400000, guid: a7f6c5cbbb4eeb24286526369ef5c1a8, type: 2}
-  treeType: {fileID: 11400000, guid: 534e94da665ef3242b922eaba2c65442, type: 2}
+  treeType: {fileID: 11400000, guid: d8025df2317646e4bbade25119d28faf, type: 2}
   rockType: {fileID: 11400000, guid: 209d1151efe54cc499c1238462b4bd2b, type: 2}
-  faunaType: {fileID: 11400000, guid: 6d8a37471d4baf74880bac543a80a5af, type: 2}
-  atmosphereType: {fileID: 11400000, guid: 5418f4eff3949d44d92b8278de38888d, type: 2}
+  faunaType: {fileID: 11400000, guid: f0285fe02c0272c488ecd03cdaea70c7, type: 2}
+  atmosphereType: {fileID: 11400000, guid: f7e8c754c2e2adc4ca227cf18cac0497, type: 2}
   planetAppearanceType: {fileID: 11400000, guid: bd01a41482bd83443b7a79eef6c99c23,
     type: 2}
   bgCloudSpeed: 1.2

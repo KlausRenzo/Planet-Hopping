@@ -52,10 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enviromentAnchors: []
-  nextPlanetsToLoad:
-  - {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156, type: 2}
-  - {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156, type: 2}
-  - {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156, type: 2}
+  nextPlanetsToLoad: []
   currentPlanet: {fileID: 0}
   hotspotPrefab: {fileID: 1386660803835512, guid: 874581279c520a3459d92f9e011d4ae3,
     type: 2}

@@ -1484,6 +1484,7 @@ MonoBehaviour:
   atmosphereImage: {fileID: 114727248230545982}
   startingPlanetInfos: {fileID: 11400000, guid: ac8fc0c15d71a3a45a3581417a075156,
     type: 2}
+  gameFlow: {fileID: 0}
 --- !u!114 &114718582566476904
 MonoBehaviour:
   m_ObjectHideFlags: 1

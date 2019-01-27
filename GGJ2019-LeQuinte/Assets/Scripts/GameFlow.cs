@@ -27,6 +27,7 @@ public class GameFlow : MonoBehaviour
 
     private PlayerMovement playerMovement;
     private PlanetGenerator planetGenerator;
+    private Inventory inventory;
 
     #endregion
 
@@ -34,11 +35,13 @@ public class GameFlow : MonoBehaviour
 
     private void Start()
     {
-        StartGame();
-
         planetGenerator = FindObjectOfType<PlanetGenerator>();
         playerMovement = FindObjectOfType<PlayerMovement>();
         playerMovement.RefreshMovementInfo();
+
+        inventory = FindObjectOfType<Inventory>();
+
+        StartGame();
     }
 
     private void Update()
@@ -121,6 +124,10 @@ public class GameFlow : MonoBehaviour
         while (anchors.Count < numberOfElementsToPlace)
         {
             int firstIndex = UnityEngine.Random.Range(0, movementGameObjects.Count);
+            while(movementGameObjects[firstIndex].name == "Angle")
+            {
+                firstIndex = UnityEngine.Random.Range(0, movementGameObjects.Count);
+            }
             int secondIndex = (firstIndex + 1) % movementGameObjects.Count; 
 
             Vector3 first = movementGameObjects[firstIndex].transform.position;
@@ -145,12 +152,16 @@ public class GameFlow : MonoBehaviour
 
     public void StartGame()
     {
-
+        planetGenerator.GetNextPlanets();
+        LeavePlanet(JumpDirections.Left);
+        playerMovement.canMove = false;
+        playerMovement.GetComponent<Animator>().SetInteger("Status", 100);
+        inventory.startingPlanetInfos = currentPlanet.GetComponent<Planet>().planetInfos;
     }
 
     public void Win()
     {
-
+        Debug.Log("YOU WIN");
     }
 
     #endregion

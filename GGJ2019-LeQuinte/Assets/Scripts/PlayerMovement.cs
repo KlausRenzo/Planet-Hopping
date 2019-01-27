@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(Sprite))]
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -42,21 +43,22 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip pickupRock;
     public AudioClip pickupSea;
 
-    [HideInInspector]
-    public Directions currentDirection;
-
+    public bool isJumping = false;
     public List<HotSpot> pickableHotSpots;
 
+    [HideInInspector]
+    public Directions currentDirection;
+    [HideInInspector]
+    public Animator anim;
+
+    private SpriteRenderer sprite;
     private float currentLerpIndex;
     private int currentMovementIndex;
     private float currentLerp;
     private AudioSource audioSource;
     private ShapeType currentShapeType;
     private int horizontalMovement;
-    private Animator anim;
     private bool isCharging = false;
-    public bool isJumping = false;
-
     #endregion
 
     #region Unity Callback
@@ -65,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
@@ -123,10 +126,22 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalMovement == 1)
         {
             Look(Directions.Right);
+            if (anim.GetInteger("Status") == 0)
+            {
+                anim.SetInteger("Status", 6);
+            }
         }
         else if (horizontalMovement == -1)
         {
             Look(Directions.Left);
+            if (anim.GetInteger("Status") == 0)
+            {
+                anim.SetInteger("Status", 6);
+            }
+        }
+        else if(anim.GetInteger("Status") == 6 && horizontalMovement == 0)
+        {
+            anim.SetInteger("Status", 0);
         }
 
         FollowLerp();
@@ -193,7 +208,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(pickUp))
+        if (Input.GetKeyUp(pickUp))
+        {
+            anim.SetInteger("Status", 0);
+        }
+
+        if (Input.GetKeyDown(pickUp))
         {
             if(isCharging || anim.GetInteger("Status") == 1)
             {
@@ -202,12 +222,22 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                PickUp();
+                anim.SetInteger("Status", 5);
             }
         }
     }
 
-    private void PickUp()
+    public void SetCanMove()
+    {
+        canMove = true;
+    }
+
+    public void SetCantMove()
+    {
+        canMove = false;
+    }
+
+    public void PickUp()
     {
         if (pickableHotSpots.Count == 0)
         {
@@ -278,11 +308,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dir == Directions.Right)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            sprite.flipX = false;
         }
         else if (dir == Directions.Left)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            sprite.flipX = true;
         }
     }
 
@@ -290,7 +320,7 @@ public class PlayerMovement : MonoBehaviour
     {
         int cap = GetCurrentShapeCap();
 
-        currentLerpIndex += (horizontalMovement * Time.deltaTime) / CalculateVectorDistace();
+        currentLerpIndex += (horizontalMovement * Time.deltaTime * playerSpeed) / CalculateVectorDistace();
         currentLerpIndex = (currentLerpIndex + cap) % cap;
 
         currentMovementIndex = Mathf.FloorToInt(currentLerpIndex);
