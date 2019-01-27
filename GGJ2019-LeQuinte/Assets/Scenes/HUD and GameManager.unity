@@ -279,14 +279,13 @@ Prefab:
       propertyPath: currentPlanet
       value: 
       objectReference: {fileID: 1113256868}
-    - target: {fileID: 82335495549876244, guid: f3db5c0a6fc22504596b74a5f6d9417d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 4139100716143982, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4434266701950370, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 1.774
+    - target: {fileID: 4139100716143982, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
