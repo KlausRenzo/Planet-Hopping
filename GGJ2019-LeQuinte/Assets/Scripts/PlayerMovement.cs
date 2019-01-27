@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public float playerSpeed;
 
     public Planet currentPlanet;
+    public ParticleSystem landingParticle;
     public bool canMove = false;
 
     public List<AudioClip> playerWalking;
@@ -78,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        horizontalMovement = 0;
+
         if (canMove)
         {
             CheckInputs();
@@ -185,8 +188,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckInputs()
     {
-        horizontalMovement = 0;
-
         if (Input.GetKey(moveLeft))
         {
             horizontalMovement--;
@@ -493,6 +494,7 @@ public class PlayerMovement : MonoBehaviour
                 audioSource.PlayOneShot(jumpSound);
                 break;
             case SoundKeys.Land:
+                landingParticle.Play();
                 audioSource.PlayOneShot(landingSound);
                 break;
             case SoundKeys.Tree:

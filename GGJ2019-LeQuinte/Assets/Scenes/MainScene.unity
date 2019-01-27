@@ -291,6 +291,30 @@ Prefab:
       propertyPath: gameFlow
       value: 
       objectReference: {fileID: 948600078}
+    - target: {fileID: 4139100716143982, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139100716143982, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932643289851110, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304095888444438, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304095888444438, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932643289851110, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
   m_IsPrefabAsset: 0
