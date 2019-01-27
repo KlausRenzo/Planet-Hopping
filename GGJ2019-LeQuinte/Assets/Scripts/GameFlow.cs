@@ -66,10 +66,10 @@ public class GameFlow : MonoBehaviour
 
     #region Methods
 
-    private void LeavePlanet(JumpDirections jumpDirection)
+    public void LeavePlanet(JumpDirections jumpDirection)
     {
         //jump -> stop play
-        playerMovement.canMove = false;
+        //playerMovement.canMove = false;
 
         //animation
 
@@ -88,7 +88,7 @@ public class GameFlow : MonoBehaviour
         //animation land
         playerMovement.currentPlanet = currentPlanet.GetComponent<Planet>();
         playerMovement.RefreshMovementInfo();
-        playerMovement.canMove = true;
+        //playerMovement.canMove = true;
     }
 
     private void LoadNextPreviews()
