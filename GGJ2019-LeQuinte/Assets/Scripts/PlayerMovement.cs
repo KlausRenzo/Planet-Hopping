@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
 [RequireComponent(typeof(Sprite))]
 public class PlayerMovement : MonoBehaviour
@@ -30,7 +31,9 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode pickUp;
 
     public float timeForPlanetHop = 2;
-    public float playerSpeed;
+    [HideInInspector] public float playerSpeed;
+    [MinMaxSlider(0,10)] public Vector2 PlayerSpeedLimiters;
+    [Range(0, 10)] public float PlayerSpeedMultiplier;
 
     public Planet currentPlanet;
     public bool canMove = false;
@@ -186,14 +189,21 @@ public class PlayerMovement : MonoBehaviour
     private void CheckInputs()
     {
         horizontalMovement = 0;
+        if (!Input.GetKey(moveLeft) && !Input.GetKey(moveRight))
+        {
+            Debug.Log("decreasing");
+            playerSpeed = Mathf.Clamp(playerSpeed - Time.deltaTime * 10, PlayerSpeedLimiters.x, PlayerSpeedLimiters.y);
+        }
 
         if (Input.GetKey(moveLeft))
         {
+            playerSpeed = Mathf.Clamp(playerSpeed + PlayerSpeedMultiplier * Time.deltaTime, PlayerSpeedLimiters.x, PlayerSpeedLimiters.y);
             horizontalMovement--;
         }
 
         if (Input.GetKey(moveRight))
         {
+            playerSpeed = Mathf.Clamp(playerSpeed + PlayerSpeedMultiplier * Time.deltaTime, PlayerSpeedLimiters.x, PlayerSpeedLimiters.y);
             horizontalMovement++;
         }
 
@@ -337,7 +347,7 @@ public class PlayerMovement : MonoBehaviour
     {
         int cap = GetCurrentShapeCap();
 
-        currentLerpIndex += (horizontalMovement * Time.deltaTime * playerSpeed) / CalculateVectorDistace();
+        currentLerpIndex += ((horizontalMovement) * Time.deltaTime * playerSpeed) / CalculateVectorDistace();
         currentLerpIndex = (currentLerpIndex + cap) % cap;
 
         currentMovementIndex = Mathf.FloorToInt(currentLerpIndex);
