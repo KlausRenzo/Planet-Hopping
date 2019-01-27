@@ -141,5 +141,10 @@ public class GameFlow : MonoBehaviour
         enviromentAnchors = anchors;
     }
 
+    public void Win()
+    {
+
+    }
+
     #endregion
 }

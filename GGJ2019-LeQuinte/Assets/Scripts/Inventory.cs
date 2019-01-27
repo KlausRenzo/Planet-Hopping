@@ -22,6 +22,7 @@ public class Inventory : MonoBehaviour
     public Image atmosphereImage;
 
     public PlanetInfo startingPlanetInfos;
+    public GameFlow gameFlow;
 
     #endregion
 
@@ -30,6 +31,7 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         FindObjectOfType<PlayerMovement>().PickUpElement += AddInInventory;
+        gameFlow = FindObjectOfType<GameFlow>();
     }
 
     #endregion
@@ -62,6 +64,21 @@ public class Inventory : MonoBehaviour
         {
             currentTree = (Tree)envElem;
             treeImage.sprite = currentTree.enviromentSprite;
+        }
+
+        CheckWin();
+    }
+
+    private void CheckWin()
+    {
+        if(currentTree == startingPlanetInfos.treeType &&
+            currentFauna == startingPlanetInfos.faunaType &&
+            currentRock == startingPlanetInfos.rockType &&
+            currentSea == startingPlanetInfos.seaType &&
+            currentPlanetAppearance == startingPlanetInfos.planetAppearanceType &&
+            currentAtmosphere == startingPlanetInfos.atmosphereType)
+        {
+            gameFlow.Win();
         }
     }
 
