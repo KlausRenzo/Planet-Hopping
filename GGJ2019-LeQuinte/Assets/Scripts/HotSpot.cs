@@ -8,6 +8,8 @@ public class HotSpot : MonoBehaviour
     #region Fields
 
     public EnviromentElement enviromentElement;
+    public GameObject interactableParticle;
+    public GameObject pickupParticle;
     private SpriteRenderer spriteRenderer;
 
     #endregion
@@ -21,6 +23,21 @@ public class HotSpot : MonoBehaviour
         {
             spriteRenderer.sprite = enviromentElement.enviromentSprite;
         }
+    }
+
+    public void InteractableParticleOn()
+    {
+        interactableParticle.GetComponent<ParticleSystem>().Play();
+    }
+
+    public void InteractableParticleOff()
+    {
+        interactableParticle.GetComponent<ParticleSystem>().Stop();
+    }
+
+    public void PickedUp()
+    {
+
     }
 
     #endregion

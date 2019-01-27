@@ -275,8 +275,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dfc928a88c2ed38458f1de8ccd896f8c, type: 3}
   - {fileID: 8300000, guid: eec57667b65625441a2ef630c27c6bda, type: 3}
   - {fileID: 8300000, guid: a80a23f0604936e4cbe0993571f16706, type: 3}
-  planetHopSound: {fileID: 8300000, guid: 66c5c775af393f741be97bd5405af2fc, type: 3}
-  jumpSound: {fileID: 8300000, guid: 3402f8e2677b86d469b231a59f991cad, type: 3}
+  planetHopSound: {fileID: 8300000, guid: e2690bc7332aa6d408b49aad53bd7db7, type: 3}
+  jumpSound: {fileID: 8300000, guid: 2c7c8b22631f1844dbea328e68146b2c, type: 3}
   landingSound: {fileID: 8300000, guid: 645905f2a419ddb4ca67890de0fd8832, type: 3}
   pickupAtmosphere: {fileID: 8300000, guid: 2e4d8a6f48f522e4a8f036e04d0035db, type: 3}
   pickupTree: {fileID: 8300000, guid: 7af7b1e3d8e32ad4881df03d82a57b35, type: 3}
