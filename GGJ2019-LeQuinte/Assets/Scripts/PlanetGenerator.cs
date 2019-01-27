@@ -109,6 +109,15 @@ public class PlanetGenerator : MonoBehaviour
             newPlanetInfo.seaType = dataGenerator.generatedSeas[GetFilteredEnviromentListIndex(dataGenerator.generatedSeas, dataGenerator.GetComplementaryColorType(mainColor))];
         }
 
+        if (IsMainProbabilityType(ProbabilityType.Color))
+        {
+            newPlanetInfo.grassType = dataGenerator.generatedGrass[GetFilteredEnviromentListIndex(dataGenerator.generatedGrass, mainColor)];
+        }
+        else
+        {
+            newPlanetInfo.grassType = dataGenerator.generatedGrass[GetFilteredEnviromentListIndex(dataGenerator.generatedGrass, dataGenerator.GetComplementaryColorType(mainColor))];
+        }
+
         if (IsMainProbabilityType(ProbabilityType.Shape))
         {
             newPlanetInfo.rockType = dataGenerator.generatedRocks[GetFilteredEnviromentListIndex(dataGenerator.generatedRocks, newPlanetInfo.planetAppearanceType.colorType, mainShape)];
@@ -182,6 +191,21 @@ public class PlanetGenerator : MonoBehaviour
         return index;
     }
 
+    private int GetFilteredEnviromentListIndex(List<Grass> list, ColorType colorType)
+    {
+        int index;
+
+        for (index = 0; index < list.Count; index++)
+        {
+            if (list[index].colorType == colorType)
+            {
+                return index;
+            }
+        }
+
+        return index;
+    }
+    
     private int GetFilteredEnviromentListIndex(List<Sea> list, ColorType colorType)
     {
         int index;

@@ -11,9 +11,11 @@ public class GameFlow : MonoBehaviour
     public Action<List<PlanetInfo>> LoadNextPlanets;
 
     public List<GameObject> enviromentAnchors;
+    public List<GameObject> environmentGrassAnchor;
     public List<PlanetInfo> nextPlanetsToLoad;
     public GameObject currentPlanet;
     public GameObject hotspotPrefab;
+    public GameObject grassPrefab;
 
     public KeyCode moveToLeftPlanet;
     public KeyCode moveToTopPlanet;
@@ -91,6 +93,7 @@ public class GameFlow : MonoBehaviour
         LaunchAgent();
 
         currentPlanet.GetComponent<Planet>().GeneratePlanet(enviromentAnchors);
+        currentPlanet.GetComponent<Planet>().PlaceGrass(environmentGrassAnchor);
 
         inventory.SetName(currentPlanet.GetComponent<Planet>().planetName);
 
@@ -133,15 +136,13 @@ public class GameFlow : MonoBehaviour
         }
 
         int numberOfElementsToPlace = UnityEngine.Random.Range(minNumberOfElements, maxNumberOfElements);
+        int grassElementToPlace = UnityEngine.Random.Range(20, 50);
         List<GameObject> anchors = new List<GameObject>();
+        List<GameObject> grassAnchor = new List<GameObject>();
 
         while (anchors.Count < numberOfElementsToPlace)
         {
             int firstIndex = UnityEngine.Random.Range(0, movementGameObjects.Count);
-            while(movementGameObjects[firstIndex].name == "Angle")
-            {
-                firstIndex = UnityEngine.Random.Range(0, movementGameObjects.Count);
-            }
             int secondIndex = (firstIndex + 1) % movementGameObjects.Count; 
 
             Vector3 first = movementGameObjects[firstIndex].transform.position;
@@ -161,7 +162,34 @@ public class GameFlow : MonoBehaviour
             anchors.Add(newHotSpot);
         }
 
+        while (grassAnchor.Count < grassElementToPlace)
+        {
+            int firstIndex = UnityEngine.Random.Range(0, movementGameObjects.Count);
+            while (movementGameObjects[firstIndex].name == "Angle")
+            {
+                firstIndex = UnityEngine.Random.Range(0, movementGameObjects.Count);
+            }
+            int secondIndex = (firstIndex + 1) % movementGameObjects.Count;
+
+            Vector3 first = movementGameObjects[firstIndex].transform.position;
+            Vector3 second = movementGameObjects[secondIndex].transform.position;
+
+            Vector3 direction = second - first;
+            float distance = direction.magnitude;
+            Vector3 unit = direction.normalized;
+
+            Vector3 newHotSpotVector = first + (unit * UnityEngine.Random.Range(0f, distance));
+
+            GameObject newGrass = Instantiate(grassPrefab, currentPlanet.transform.Find("Terrain"));
+            newGrass.transform.position = newHotSpotVector;
+            newGrass.transform.up = Vector2.Perpendicular(second - first);
+            float scaler = UnityEngine.Random.Range(minScaler, maxScaler);
+            newGrass.transform.localScale = Vector3.one * scaler;
+            grassAnchor.Add(newGrass);
+        }
+
         enviromentAnchors = anchors;
+        environmentGrassAnchor = grassAnchor;
     }
 
     public void StartGame()

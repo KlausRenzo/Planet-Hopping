@@ -12,6 +12,7 @@ public class PlanetInfo : ScriptableObject
     public Tree treeType;
     public Rock rockType;
     public Fauna faunaType;
+    public Grass grassType;
     public Atmosphere atmosphereType;   
     public PlanetAppearance planetAppearanceType;
     public float bgCloudSpeed;
