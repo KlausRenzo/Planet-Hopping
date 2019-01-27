@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a54c238c5338af942a837947318e2431, type: 3}
-  m_Name: green_circle_trees
+  m_Name: green_circle_Trees
   m_EditorClassIdentifier: 
   enviromentSprite: {fileID: 21300000, guid: bd9bb670fd17f2c469d9f17c2af00f98, type: 3}
   shapeType: 3

@@ -291,6 +291,16 @@ Prefab:
       propertyPath: gameFlow
       value: 
       objectReference: {fileID: 948600078}
+    - target: {fileID: 212187361841208472, guid: f3db5c0a6fc22504596b74a5f6d9417d,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -321971839
+      objectReference: {fileID: 0}
+    - target: {fileID: 212187361841208472, guid: f3db5c0a6fc22504596b74a5f6d9417d,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3db5c0a6fc22504596b74a5f6d9417d, type: 2}
   m_IsPrefabAsset: 0
@@ -1306,15 +1316,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 224908699437246190, guid: b6e3ac799d0110e4cad00288fc50e9d1,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -28.000061
-      objectReference: {fileID: 0}
     - target: {fileID: 224362713823644414, guid: b6e3ac799d0110e4cad00288fc50e9d1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 28.000061
+      objectReference: {fileID: 0}
+    - target: {fileID: 224908699437246190, guid: b6e3ac799d0110e4cad00288fc50e9d1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -28.000061
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6e3ac799d0110e4cad00288fc50e9d1, type: 2}

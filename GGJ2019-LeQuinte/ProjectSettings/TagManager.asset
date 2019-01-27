@@ -54,6 +54,9 @@ TagManager:
   - name: CloudsBG
     uniqueID: 3649728923
     locked: 0
+  - name: Grass
+    uniqueID: 2764595617
+    locked: 0
   - name: Planet
     uniqueID: 3612418063
     locked: 0
@@ -68,9 +71,6 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3749263921
-    locked: 0
-  - name: Grass
-    uniqueID: 2764595617
     locked: 0
   - name: Seas
     uniqueID: 328975709

@@ -52,9 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enviromentAnchors: []
+  environmentGrassAnchor: []
   nextPlanetsToLoad: []
   currentPlanet: {fileID: 0}
   hotspotPrefab: {fileID: 1386660803835512, guid: 874581279c520a3459d92f9e011d4ae3,
+    type: 2}
+  grassPrefab: {fileID: 1432308879275796, guid: 7f61a650f384a7b45a9d4a59fc05c059,
     type: 2}
   moveToLeftPlanet: 106
   moveToTopPlanet: 105
@@ -63,3 +66,4 @@ MonoBehaviour:
   maxScaler: 1.2
   maxNumberOfElements: 12
   minNumberOfElements: 8
+  inventory: {fileID: 0}
