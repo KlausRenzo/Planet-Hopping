@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip pickupTree;
     public AudioClip pickupRock;
     public AudioClip pickupSea;
+    public AudioClip pickupFauna;
 
     [HideInInspector] public Directions currentDirection;
 

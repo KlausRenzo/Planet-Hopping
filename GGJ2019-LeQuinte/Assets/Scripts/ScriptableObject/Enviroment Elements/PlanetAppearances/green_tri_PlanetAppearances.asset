@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc0ebc74048780b44a9ccb6cf29afa20, type: 3}
-  m_Name: green_tri_planetappearances
+  m_Name: green_tri_PlanetAppearances
   m_EditorClassIdentifier: 
   enviromentSprite: {fileID: 21300000, guid: 42c96f53d3d254f469d19f57495608a8, type: 3}
   shapeType: 0

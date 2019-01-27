@@ -34,6 +34,8 @@ public class GameFlow : MonoBehaviour
 
     private void Start()
     {
+        StartGame();
+
         planetGenerator = FindObjectOfType<PlanetGenerator>();
         playerMovement = FindObjectOfType<PlayerMovement>();
         playerMovement.RefreshMovementInfo();
@@ -141,5 +143,15 @@ public class GameFlow : MonoBehaviour
         enviromentAnchors = anchors;
     }
 
-   #endregion
+    public void StartGame()
+    {
+
+    }
+
+    public void Win()
+    {
+
+    }
+
+    #endregion
 }

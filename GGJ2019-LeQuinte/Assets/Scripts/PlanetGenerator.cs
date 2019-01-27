@@ -22,6 +22,9 @@ public class PlanetGenerator : MonoBehaviour
     public GameObject planet;
     public GameObject currentPlanet;
     public List<PlanetInfo> nextPlanetInfos = new List<PlanetInfo>();
+    [Space(10)]
+    public List<string> affixes = new List<string>();
+    public List<string> planetNames = new List<string>();
 
     EnviromentDataGenerator dataGenerator;
 
@@ -47,7 +50,7 @@ public class PlanetGenerator : MonoBehaviour
         newPlanet.bgCloudsSpeed = newPlanet.planetInfos.bgCloudSpeed;
         newPlanet.fgCloudsSpeed = newPlanet.planetInfos.fgCloudSpeed;
         newPlanet.planetSpeed = newPlanet.planetInfos.planetSpeed;
-        newPlanet.planetName = GenerateName(newPlanet.planetInfos.planetAppearanceType);
+        newPlanet.planetName = GenerateName();
 
         if (newPlanet.planetInfos.planetAppearanceType.enviromentSprite != null)
         {
@@ -150,11 +153,11 @@ public class PlanetGenerator : MonoBehaviour
         return newPlanetInfo;
     }
 
-    private string GenerateName(PlanetAppearance planetAppearanceType)
+    private string GenerateName()
     {
-        //based on planetAppearanceType
+        string name = affixes[UnityEngine.Random.Range(0, affixes.Count)] + " " + planetNames[UnityEngine.Random.Range(0, planetNames.Count)];
 
-        return "Nome Pianeta";
+        return name;
     }
 
     [Button(Name = "Flat Main and Secondary Probabilities", ButtonHeight = 50)]
